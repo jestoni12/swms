@@ -2,35 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Title -->
-        <title>Modern | Layouts - Blank Page</title>
-        
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta charset="UTF-8">
-        <meta name="description" content="Admin Dashboard Template" />
-        <meta name="keywords" content="admin,dashboard" />
-        <meta name="author" content="Steelcoders" />
-        
-        <!-- Styles -->
-        <link href="{{ asset('assets/google_font/google_font.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/plugins/pace-master/themes/blue/pace-theme-flash.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('assets/plugins/uniform/dist/css/uniform.default.min.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('assets/plugins/bootstrap/dist/css/bootstrap.min2.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/plugins/simple-line-icons/css/simple-line-icons2.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('assets/plugins/offcanvasmenueffects/css/menu_cornerbox2.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('assets/plugins/waves/dist/waves.min2.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('assets/plugins/switchery/dist/switchery.min2.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/plugins/3d-bold-navigation/css/style2.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('assets/plugins/slidepushmenus/css/component2.css') }}" rel="stylesheet" type="text/css"/>
-        
-        <!-- Theme Styles -->
-        <link href="{{ asset('assets/css/modern.min2.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/css//themes/green.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
-        
-        <script src="{{ asset('assets/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
-        <script src="{{ asset('assets/plugins/offcanvasmenueffects/js/snap.svg-min.js') }}"></script>
+       @include('layouts.head')
     </head>
     <body class="page-header-fixed">
         <div class="overlay"></div>
@@ -330,9 +302,12 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="log-out waves-effect waves-button waves-classic">
                                         <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
                                     </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic" id="showRight">
@@ -560,22 +535,6 @@
             </ul>
         </nav>
         <div class="cd-overlay"></div>
-	
-
-        <!-- Javascripts -->
-        <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/pace-master/pace.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/jquery-blockui/jquery.blockui.js') }}"></script>
-        <script src="{{ asset('assets/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/switchery/dist/switchery.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/uniform/dist/js/jquery.uniform.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/offcanvasmenueffects/js/classie.js') }}"></script>
-        <script src="{{ asset('assets/plugins/offcanvasmenueffects/js/main.js') }}"></script>
-        <script src="{{ asset('assets/plugins/waves/dist/waves.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/3d-bold-navigation/js/main.js') }}"></script>
-        <script src="{{ asset('assets/js/modern.min.js') }}"></script>
-        
+        @include('layouts.script')
     </body>
 </html>

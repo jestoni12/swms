@@ -36,4 +36,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Change the needed authorization credentials for email to username from the request.
+     *
+     * @return string
+     */
+
+    public function username()
+    {
+        return 'username';
+    }
 }
