@@ -26,7 +26,7 @@
         
         <!-- Theme Styles -->
         <link href="{{ asset('assets/css/modern.min2.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('assets/css/green.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css//themes/green.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
         
         <script src="{{ asset('assets/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
