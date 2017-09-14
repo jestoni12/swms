@@ -11,8 +11,8 @@
 (function() {
 
 	var bodyEl = document.body,
-		content = document.querySelector( '.content-wrap' ),
-		openbtn = document.getElementById( 'open-button' ),
+		overlay = document.querySelector( '.overlay' ),
+		openbtn = document.getElementById( 'profile-menu-link' ),
 		closebtn = document.getElementById( 'close-button' ),
 		isOpen = false;
 
@@ -26,8 +26,8 @@
 			closebtn.addEventListener( 'click', toggleMenu );
 		}
 
-		// close the menu element if the target it´s not the menu element or one of its descendants..
-		content.addEventListener( 'click', function(ev) {
+		// close the menu element if the target itÂ´s not the menu element or one of its descendants..
+		overlay.addEventListener( 'click', function(ev) {
 			var target = ev.target;
 			if( isOpen && target !== openbtn ) {
 				toggleMenu();
