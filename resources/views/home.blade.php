@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Bogart, You've Got It!</h1>
+<h5>Bogart, You've Got It!</h5>
 <br/>
 <br/>
 <br/>

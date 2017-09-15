@@ -11,9 +11,9 @@
                     <div class="row">
                         <div class="col-md-3 center">
                             <div class="login-box">
-                                <a href="index.html" class="logo-name text-lg text-center">Modern</a>
+                                <a href="" class="logo-name text-lg text-center">Modern</a>
                                 <p class="text-center m-t-md">Please login into your account.</p>
-                                <form class="m-t-md" action="{{ route('login') }}" method="POST">
+                                <form class="m-t-md" action="{{ route('login') }}" method="POST" autocomplete="off">
                                     {{ csrf_field() }}
                                     <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                         <input type="text" name="username" value="{{ old('username') }}" class="form-control" placeholder="Username" required autofocus>
@@ -23,8 +23,8 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password" required>
+                                    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
                                     </div>
                                     <label>
                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
