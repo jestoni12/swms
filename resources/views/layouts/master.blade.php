@@ -7,7 +7,7 @@
     <body class="page-header-fixed">
         <div class="overlay"></div>
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-            <h3><span class="pull-left">Sandra Smith</span> <a href="javascript:void(0);" class="pull-right" id="closeRight2"><i class="fa fa-angle-right"></i></a></h3>
+            <h3><span class="pull-left">Bogart Brown</span> <a href="javascript:void(0);" class="pull-right" id="closeRight2"><i class="fa fa-angle-right"></i></a></h3>
             <div class="slimscroll chat">
                 <div class="chat-item chat-item-left">
                     <div class="chat-image">
@@ -277,7 +277,7 @@
                             <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
                         </li>
                         <li>
-                            <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
+                            <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
                         </li>
                         <li>
                             <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
@@ -316,19 +316,15 @@
             </div><!-- Page Sidebar -->
             <div class="page-inner">
                 <div class="page-title">
-                    <h3>Blank Page</h3>
+                    <h3>@yield('content_header')</h3>
                     <div class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="#">Layouts</a></li>
-                            <li class="active">Blank Page</li>
+                            @yield('content_header_link')
                         </ol>
                     </div>
                 </div>
-                <div id="main-wrapper">
-                    <div class="row">
-                         @yield('content')
-                    </div><!-- Row -->
+                <div id="main-wrapper">  
+                    @yield('content')
                 </div><!-- Main Wrapper -->
                 <div class="page-footer">
                     <p class="no-s">2015 &copy; Modern by Steelcoders.</p>

@@ -1,1 +1,4 @@
 /* Write your custom CSS here */
+.table td, .table th{
+	padding: 8px;
+}

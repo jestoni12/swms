@@ -18,10 +18,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->page_num = 15;
+    }
+
     public function index()
     {
-        $result = User::latest()->paginate();
-
+        $result = User::latest()->paginate($this->page_num);
         return view('user.index', compact('result'));
     }
 

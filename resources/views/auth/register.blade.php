@@ -40,7 +40,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="password_confirmation"0 placeholder="Confirm Password" required>   
+                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>   
                                     </div>
                                     <button type="submit" class="btn btn-success btn-block m-t-xs">Submit</button>
                                     <p class="text-center m-t-xs text-sm">Already have an account?</p>
