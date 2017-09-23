@@ -35,8 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id');
-
+        $roles = Role::select('name', 'id')->get();
         return view('user.new', compact('roles'));
     }
 
@@ -50,8 +49,8 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:2',
-            'username' => 'required|username|unique:users',
-            'password' => 'required|min:6',
+            'username' => 'required|unique:users',
+            'password' => 'required|min:4',
             'roles' => 'required|min:1'
         ]);
 
@@ -92,10 +91,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name', 'id');
+        $roles = Role::all('name', 'id');
         $permissions = Permission::all('name', 'id');
-
-        return view('user.edit', compact('user', 'roles', 'permissions'));
+        $user_role = $user->roles->pluck('id')->toArray();
+        return view('user.edit', compact('user', 'roles', 'permissions','user_role'));
     }
 
     /**
@@ -109,7 +108,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:2',
-            'username' => 'required|username|unique:users,username,' . $id,
+            'username' => 'required|unique:users,username,' . $id,
             'roles' => 'required|min:1'
         ]);
 

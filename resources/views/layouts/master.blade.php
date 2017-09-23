@@ -276,12 +276,16 @@
                         <li>
                             <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
                         </li>
-                        <li>
-                            <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
-                        </li>
-                        <li>
-                            <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
-                        </li>
+                        @can('view_users')
+                            <li class="{{ Request::is('users*') ? 'active' : '' }}">
+                                <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
+                            </li>
+                        @endcan
+                        @can('view_roles')
+                            <li class="{{ Request::is('roles*') ? 'active' : '' }}">
+                                <a href="{{ route('roles.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
+                            </li>
+                        @endcan
                         <li class="droplink">
                             <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-book"></span><p>Employees</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
@@ -323,11 +327,12 @@
                         </ol>
                     </div>
                 </div>
-                <div id="main-wrapper">  
+                <div id="main-wrapper">
+                    @include('flash::message')
                     @yield('content')
                 </div><!-- Main Wrapper -->
                 <div class="page-footer">
-                    <p class="no-s">2015 &copy; Modern by Steelcoders.</p>
+                    <p class="no-s">2017 &copy; Bs Information Technology</p>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
