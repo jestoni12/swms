@@ -15,11 +15,22 @@
                                 <p class="text-center m-t-md">Create a Modern's account</p>
                                 <form class="m-t-md" action="{{ route('register') }}" method="POST" >
                                     {{ csrf_field() }}
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <input type="text" class="form-control" placeholder="Name" required name="name" value="{{ old('name') }}">
-                                        @if ($errors->has('name'))
+                                    <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
+                                        <input type="text" class="form-control" placeholder="First Name" required name="firstname" value="{{ old('firstname') }}">
+                                        @if ($errors->has('firstname'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
+                                                <strong>{{ $errors->first('firstname') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Middle Name"  name="middlename">
+                                    </div>
+                                    <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+                                        <input type="text" class="form-control" placeholder="Last Name" required name="lastname" value="{{ old('lastname') }}">
+                                        @if ($errors->has('lastname'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('lastname') }}</strong>
                                             </span>
                                         @endif
                                     </div>

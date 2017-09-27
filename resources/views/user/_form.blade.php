@@ -1,18 +1,35 @@
 {{ csrf_field() }}
-<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-    <label class="control-label col-sm-4" for="name">Name:</label>
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="name" placeholder="Name" required name="name" value="{{ isset($user) ? $user->name : old('name') }}">
-        @if ($errors->has('name'))
+<div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
+    <label class="control-label col-sm-3" for="firstname">First Name:</label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="firstname" placeholder="First Name" required name="firstname" value="{{ isset($user) ? $user->firstname : old('firstname') }}">
+        @if ($errors->has('firstname'))
             <span class="help-block">
-                <strong>{{ $errors->first('name') }}</strong>
+                <strong>{{ $errors->first('firstname') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group{{ $errors->has('middlename') ? ' has-error' : '' }}">
+    <label class="control-label col-sm-3" for="middlename">Middle Name:</label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="middlename" placeholder="Middle Name" required name="middlename" value="{{ isset($user) ? $user->middlename : old('middlename') }}">
+    </div>
+</div>
+<div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+    <label class="control-label col-sm-3" for="lastname">Last Name:</label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="lastname" placeholder="Last Name" required name="lastname" value="{{ isset($user) ? $user->lastname : old('lastname') }}">
+        @if ($errors->has('lastname'))
+            <span class="help-block">
+                <strong>{{ $errors->first('lastname') }}</strong>
             </span>
         @endif
     </div>
 </div>
 <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-    <label class="control-label col-sm-4" for="username">Username:</label>
-    <div class="col-sm-8">
+    <label class="control-label col-sm-3" for="username">Username:</label>
+    <div class="col-sm-9">
         <input type="text" class="form-control" id="username" name="username" placeholder="Username" required value="{{ isset($user) ? $user->username : old('username') }}">
         @if ($errors->has('username'))
             <span class="help-block">
@@ -22,8 +39,8 @@
     </div>
 </div>
 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-    <label class="control-label col-sm-4" for="password">Password:</label>
-    <div class="col-sm-8">
+    <label class="control-label col-sm-3" for="password">Password:</label>
+    <div class="col-sm-9">
         <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
         @if ($errors->has('password'))
             <span class="help-block">
@@ -33,16 +50,16 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-sm-4" for="cpassword">Confirm Password:</label>
-    <div class="col-sm-8">
+    <label class="control-label col-sm-3" for="cpassword">Confirm Password:</label>
+    <div class="col-sm-9">
         <input type="password" class="form-control" id="cpassword" name="password_confirmation" placeholder="Confirm Password" required> 
     </div> 
 </div>
 
 <!-- Roles Form Input -->
 <div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
-    <label class="control-label col-sm-4" for="roles">Roles:</label>
-    <div class="col-sm-8">
+    <label class="control-label col-sm-3" for="roles">Roles:</label>
+    <div class="col-sm-9">
         <select class="form-control" id="roles" multiple="true" name="roles[]">
             @if(isset($user))
                 @foreach($roles as $role)
@@ -62,6 +79,10 @@
     </div>
 </div>
 <!-- Permissions -->
+{{--
+
 @if(isset($user))
     @include('shared._permissions', ['closed' => 'true', 'model' => $user ])
 @endif
+
+--}}

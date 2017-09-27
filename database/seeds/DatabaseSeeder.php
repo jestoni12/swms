@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $ref = 0;
         // Ask for db migration refresh, default is no
         if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')) {
             // disable fk constrain check
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
 
             // enable back fk constrain check
             // \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            $ref = 1;
         }
 
 
@@ -38,7 +40,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Default Permissions added.');
 
         // Confirm roles needed
-        if ($this->command->confirm('Create Roles for user, default is admin and user? [y|N]', true)) {
+        if ($this->command->confirm('Create Roles for user, default is admin and user?', true)) {
 
             // Ask for roles from input 
             $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,User');
@@ -66,8 +68,12 @@ class DatabaseSeeder extends Seeder
             $this->command->info('Roles ' . $input_roles . ' added successfully');
 
         } else {
-            Role::firstOrCreate(['name' => 'User']);
-            $this->command->info('Added only default user role.');
+            if($ref == 1){
+                $role = Role::firstOrCreate(['name' => 'Admin']);
+                $role->syncPermissions(Permission::all());
+                $this->command->info('Default Role is Admin that granted all the permissions :)');
+                $this->createUser($role);
+            }
         }
 
 
@@ -84,13 +90,20 @@ class DatabaseSeeder extends Seeder
      */
     private function createUser($role)
     {
-        $user = factory(User::class)->create();
+        $user = User::firstOrCreate([
+                'firstname' => $role->name,
+                'middlename' => $role->name,
+                'lastname' => $role->name,
+                'username' => $role->name,
+                'password' => bcrypt('secret')
+            ]);
         $user->assignRole($role->name);
 
         if( $role->name == 'Admin' ) {
             $this->command->info('Here is your admin details to login:');
             $this->command->warn($user->username);
             $this->command->warn('Password is "secret"');
+            $this->command->info('You can override your credentials in Admin page :)');
         }
     }
 }

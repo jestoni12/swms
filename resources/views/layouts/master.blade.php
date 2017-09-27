@@ -267,15 +267,28 @@
                                     <img src="assets/images/profile-menu-image.png" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
-                                    <span>Admin<br><small>Admin</small></span>
+                                    <span>{{Auth::user()->username}}
+                                        <br>
+                                        <small>
+                                        @foreach(Auth::user()->roles as $k => $role)
+                                            @if($k == 0)
+                                                {{$role->name}}
+                                            @else
+                                                , {{$role->name}}
+                                            @endif
+                                        @endforeach
+                                        </small>
+                                    </span>
                                 </div>
                             </a>
                         </div>
                     </div>
                     <ul class="menu accordion-menu">
-                        <li>
-                            <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
-                        </li>
+                        @hasrole('Admin')
+                            <li>
+                                <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
+                            </li>
+                        @endhasrole
                         @can('view_users')
                             <li class="{{ Request::is('users*') ? 'active' : '' }}">
                                 <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
@@ -286,34 +299,13 @@
                                 <a href="{{ route('roles.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
                             </li>
                         @endcan
-                        <li class="droplink">
-                            <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-book"></span><p>Employees</p><span class="arrow"></span></a>
-                            <ul class="sub-menu">
-                                <li><a href="inbox.html">Category 1</a></li>
-                                <li><a href="inbox-alt.html">Inbox Alt</a></li>
-                                <li><a href="message-view.html">View Message</a></li>
-                                <li><a href="message-view-alt.html">View Message Alt</a></li>
-                                <li><a href="compose.html">Compose</a></li>
-                                <li><a href="compose-alt.html">Compose Alt</a></li>
-                            </ul>
+                        <li class="{{ Request::is('trucks*') ? 'active' : '' }}">
+                            <a href="{{ route('trucks.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
                         </li>
                         
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Solid Waste</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="ui-alerts.html">Alerts</a></li>
-                                <li><a href="ui-buttons.html">Buttons</a></li>
-                                <li><a href="ui-icons.html">Icons</a></li>
-                                <li><a href="ui-typography.html">Typography</a></li>
-                                <li><a href="ui-notifications.html">Notifications</a></li>
-                                <li><a href="ui-grid.html">Grid</a></li>
-                                <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                <li><a href="ui-modals.html">Modals</a></li>
-                                <li><a href="ui-panels.html">Panels</a></li>
-                                <li><a href="ui-progress.html">Progress Bars</a></li>
-                                <li><a href="ui-sliders.html">Sliders</a></li>
-                                <li><a href="ui-nestable.html">Nestable</a></li>
-                                <li><a href="ui-tree-view.html">Tree View</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </div><!-- Page Sidebar Inner -->

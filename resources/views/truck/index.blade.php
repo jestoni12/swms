@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', ' - Users')
+@section('title', ' - Trucks')
 
 @section('content_header')
-    {{ $result->total() }}  {{ str_plural('User', $result->count()) }}
+    Trucks
 @endsection
 
 @section('content_header_link')
