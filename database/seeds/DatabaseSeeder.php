@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         // Confirm roles needed
         if ($this->command->confirm('Create Roles for user, default is admin and user? [y|N]', true)) {
 
-            // Ask for roles from input
+            // Ask for roles from input 
             $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,User');
 
             // Explode roles
@@ -72,8 +72,8 @@ class DatabaseSeeder extends Seeder
 
 
         // now lets seed some posts for demo
-        factory(\App\Post::class, 30)->create();
-        $this->command->info('Some Posts data seeded.');
+        // factory(\App\Post::class, 30)->create();
+        // $this->command->info('Some Posts data seeded.');
         $this->command->warn('All done :)');
     }
 

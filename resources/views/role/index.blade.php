@@ -51,7 +51,7 @@
             @if($role->name === 'Admin')
                 @include('shared._permissions', [
                               'title' => $role->name .' Permissions',
-                              'options' => ['disabled'] ])
+                              'options' => 'disabled' ])
             @else
                 @include('shared._permissions', [
                               'title' => $role->name .' Permissions',

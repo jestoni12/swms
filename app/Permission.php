@@ -18,11 +18,6 @@ class Permission extends Model
             'add_roles',
             'edit_roles',
             'delete_roles',
-
-            'view_posts',
-            'add_posts',
-            'edit_posts',
-            'delete_posts',
         ];
     }
 }

@@ -25,7 +25,7 @@
                     <div class="col-md-4">
                         <div class="checkbox">
                             <label class="{{ str_contains($perm->name, 'delete') ? 'text-danger' : '' }}">
-                                <input type="checkbox" name="permissions[]" class="form-control" {{($per_found) ? 'checked' : ''}} value="{{$perm->name}}"> {{$perm->name}}
+                                <input type="checkbox" name="permissions[]" {{isset($options) ? 'disabled' : ''}}  class="form-control" {{($per_found) ? 'checked' : ''}} value="{{$perm->name}}"> {{$perm->name}}
                             </label>
                         </div>
                     </div>
