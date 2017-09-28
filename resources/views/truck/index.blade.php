@@ -9,7 +9,7 @@
 @section('content_header_link')
     <li class="active">List</a></li>
     @can('add_users')
-        <li><a href="{{ route('users.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
+        <li><a href="{{ route('trucks.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
     @endcan
 @endsection
 
@@ -20,10 +20,10 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Username</th>
-                <th>Role</th>
+                <th>Description</th>
+                <th>Plate Number</th>
                 <th>Created At</th>
-                @can('edit_users', 'delete_users')
+                @can('edit_trucks', 'delete_trucks')
                 <th class="text-center">Actions</th>
                 @endcan
             </tr>
@@ -32,15 +32,15 @@
             @foreach($result as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->firstname }} {{ $item->middlename }} {{ $item->lastname }}</td>
-                    <td>{{ $item->username }}</td>
-                    <td>{{ $item->roles->implode('name', ', ') }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->description }}</td>
+                    <td>{{ $item->plate_number }}</td>
                     <td>{{ $item->created_at->toFormattedDateString() }}</td>
 
                     @can('edit_users')
                     <td class="text-center">
                         @include('shared._actions', [
-                            'entity' => 'users',
+                            'entity' => 'trucks',
                             'id' => $item->id
                         ])
                     </td>

@@ -18,6 +18,11 @@ class Permission extends Model
             'add_roles',
             'edit_roles',
             'delete_roles',
+
+            'view_trucks',
+            'add_trucks',
+            'edit_trucks',
+            'delete_trucks',
         ];
     }
 }

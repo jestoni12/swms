@@ -299,9 +299,11 @@
                                 <a href="{{ route('roles.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
                             </li>
                         @endcan
-                        <li class="{{ Request::is('trucks*') ? 'active' : '' }}">
-                            <a href="{{ route('trucks.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
-                        </li>
+                        @can('view_trucks')
+                            <li class="{{ Request::is('trucks*') ? 'active' : '' }}">
+                                <a href="{{ route('trucks.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
+                            </li>
+                        @endcan
                         
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Solid Waste</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
