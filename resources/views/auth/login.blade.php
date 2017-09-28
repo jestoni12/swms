@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-3 center">
                             <div class="login-box">
-                                <a href="" class="logo-name text-lg text-center">Modern</a>
+                                <a href="" class="logo-name text-lg text-center">SWMS</a>
                                 <p class="text-center m-t-md">Please login into your account.</p>
                                 <form class="m-t-md" action="{{ route('login') }}" method="POST" autocomplete="off">
                                     {{ csrf_field() }}

@@ -229,8 +229,8 @@
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
-                                        <span class="user-name">{{ Auth::user()->name }}<i class="fa fa-angle-down"></i></span>
-                                        <img class="img-circle avatar" src="assets/images/avatar2.png" width="40" height="40" alt="">
+                                        <span class="user-name">{{ Auth::user()->username }}<i class="fa fa-angle-down"></i></span>
+                                        <img class="img-circle avatar" src="{{ asset('assets/images/profile-menu-image.png') }}" width="40" height="40" alt="">
                                     </a>
                                     <ul class="dropdown-menu dropdown-list" role="menu">
                                         <li role="presentation">
@@ -264,7 +264,7 @@
                         <div class="sidebar-profile">
                             <a href="javascript:void(0);" id="profile-menu-link">
                                 <div class="sidebar-profile-image">
-                                    <img src="assets/images/profile-menu-image.png" class="img-circle img-responsive" alt="">
+                                    <img src="{{ asset('assets/images/profile-menu-image.png') }}" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
                                     <span>{{Auth::user()->username}}
@@ -284,11 +284,9 @@
                         </div>
                     </div>
                     <ul class="menu accordion-menu">
-                        @hasrole('Admin')
-                            <li>
-                                <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
-                            </li>
-                        @endhasrole
+                        <li class="{{ Request::is('home*') ? 'active' : '' }}">
+                            <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
+                        </li>
                         @can('view_users')
                             <li class="{{ Request::is('users*') ? 'active' : '' }}">
                                 <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
@@ -305,9 +303,10 @@
                             </li>
                         @endcan
                         
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Solid Waste</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Recording</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="ui-alerts.html">Alerts</a></li>
+                                <li><a href="">User Logs</a></li>
+                                <li><a href="">Garbage</a></li>
                         </li>
                     </ul>
                 </div><!-- Page Sidebar Inner -->

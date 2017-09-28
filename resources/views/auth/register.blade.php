@@ -11,8 +11,8 @@
                     <div class="row">
                         <div class="col-md-3 center">
                             <div class="login-box">
-                                <a href="index.html" class="logo-name text-lg text-center">Modern</a>
-                                <p class="text-center m-t-md">Create a Modern's account</p>
+                                <a href="index.html" class="logo-name text-lg text-center">SWMS</a>
+                                <p class="text-center m-t-md">Create a SWMS's account</p>
                                 <form class="m-t-md" action="{{ route('register') }}" method="POST" >
                                     {{ csrf_field() }}
                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
