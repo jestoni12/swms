@@ -1,42 +1,64 @@
+
 <!DOCTYPE html>
 <html>
+
     <head>
-         @include('layouts.head')
+        <meta charset="utf-8"/>
+        <title>SWMS</title>
+
+        <!-- The main CSS file -->
+        <link href="{{ asset('assets/plugins/clock/css/style.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('assets/images/swms-logo.png')}}" rel="icon" type="image">
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style type="text/css">
+            .logo{
+                position: absolute;
+                margin:10px;
+                top: 0px;
+                left: 0px;
+                vertical-align: center;
+
+            }
+            .logo img{
+                width: 100px;
+                height: 100px;
+            }
+            .logo span {
+                font-weight: bold;
+                color: #497296;
+                letter-spacing: 2px;
+            }
+        </style>
     </head>
-    <body class="page-login">
-        <main class="page-content">
-            <div class="page-inner">
-                <div id="main-wrapper">
-                    <div class="row">
-                        <div class="col-md-3 center">
-                            <div class="login-box">
-                                <a href="" class="logo-name text-lg text-center">WELCOME SWMS</a>
-                                <p class="text-center m-t-md">Please login into your account.</p>
-                                <form class="m-t-md" action="{{ route('login') }}" method="POST" autocomplete="off">
-                                    <br/>
-                                    <br/>
-                                    <h4>Barcode Login Buhatonon Pajud.</h4>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    @if (Route::has('login'))
-                                        @if (Auth::check())
-                                            <a class="btn btn-default btn-block m-t-md" href="{{ url('/home') }}">Home</a>
-                                        @else
-                                            <p class="text-center m-t-xs text-sm">Login With Username and password?</p>
-                                            <a href="{{ route('login') }}" class="btn btn-default btn-block m-t-md">Login</a>
-                                            <a href="{{ route('register') }}" class="btn btn-default btn-block m-t-md">Create an account</a>
-                                        @endif
-                                    @endif
-                                </form>
-                                <p class="text-center m-t-xs text-sm">2017 &copy; BS Information Technology</p>
-                            </div>
-                        </div>
-                    </div><!-- Row -->
-                </div><!-- Main Wrapper -->
-            </div><!-- Page Inner -->
-        </main><!-- Page Content -->
-        @include('layouts.script')
+
+    <body>
+        <div class="logo">
+           <img src="{{asset('assets/images/swms-logo.png')}}"> 
+           <span>SOLID WASTE MANAGEMENT SYSTEM</span>
+        </div>
+        <div id="clock" class="light">
+            <div class="display">
+                <div class="weekdays"></div>
+                <div class="ampm"></div>
+                <div class="alarm"></div>
+                <div class="digits"></div>
+            </div>
+        </div>
+
+        <div class="button-holder">
+            <a class="button">Switch Theme</a>
+        </div>
+
+        <footer>
+            <a class="tz" href="{{ route('login') }}" style="color: #86caee">Click here to login using account</a>
+        </footer>
+        
+        <!-- JavaScript Includes -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="{{ asset('assets/plugins/clock/js/moment.js') }}"></script>
+        <script src="{{ asset('assets/plugins/clock/js/script.js') }}"></script>
+
     </body>
 </html>
