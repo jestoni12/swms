@@ -20,9 +20,15 @@
                                     <br/>
                                     <br/>
                                     <br/>
-                                    <p class="text-center m-t-xs text-sm">Login With Username and password?</p>
-                                    <a href="{{ route('login') }}" class="btn btn-default btn-block m-t-md">Login</a>
-                                    <a href="{{ route('register') }}" class="btn btn-default btn-block m-t-md">Create an account</a>
+                                    @if (Route::has('login'))
+                                        @if (Auth::check())
+                                            <a class="btn btn-default btn-block m-t-md" href="{{ url('/home') }}">Home</a>
+                                        @else
+                                            <p class="text-center m-t-xs text-sm">Login With Username and password?</p>
+                                            <a href="{{ route('login') }}" class="btn btn-default btn-block m-t-md">Login</a>
+                                            <a href="{{ route('register') }}" class="btn btn-default btn-block m-t-md">Create an account</a>
+                                        @endif
+                                    @endif
                                 </form>
                                 <p class="text-center m-t-xs text-sm">2017 &copy; BS Information Technology</p>
                             </div>
