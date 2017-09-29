@@ -306,7 +306,8 @@
                         <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Recording</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li class="{{ Request::is('record/userlogs*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
-                                <li><a href="">Garbage</a></li>
+                                <li><a href="">Fertilizer</a></li>
+                                <li><a href="">Garbage Weigh In</a></li>
                             </ul>
                         </li>
                     </ul>
