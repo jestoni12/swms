@@ -19,6 +19,7 @@
                 top: 0px;
                 left: 0px;
                 vertical-align: center;
+                text-align: center
 
             }
             .logo img{
@@ -28,15 +29,19 @@
             .logo span {
                 font-weight: bold;
                 color: #497296;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
+                font-family: verdana;
             }
         </style>
     </head>
 
     <body>
         <div class="logo">
-           <img src="{{asset('assets/images/swms-logo.png')}}"> 
-           <span>SOLID WASTE MANAGEMENT SYSTEM</span>
+           <img src="{{asset('assets/images/swms-logo.png')}}"> <br/>
+           <span>SWMS</span>
+           <br/>
+           <br/>
+           <a href="{{ route('login') }}" style="color: #497296;font-size: 11px;">Click here to login using account</a>
         </div>
         <div id="clock" class="light">
             <div class="display">
@@ -50,10 +55,6 @@
         <div class="button-holder">
             <a class="button">Switch Theme</a>
         </div>
-
-        <footer>
-            <a class="tz" href="{{ route('login') }}" style="color: #86caee">Click here to login using account</a>
-        </footer>
         
         <!-- JavaScript Includes -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
