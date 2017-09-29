@@ -4,7 +4,7 @@
     <head>
        @include('layouts.head')
     </head>
-    <body class="page-header-fixed page-sidebar-fixed">
+    <body class="page-header-fixed">
         <div class="overlay"></div>
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
             <h3><span class="pull-left">Bogart Brown</span> <a href="javascript:void(0);" class="pull-right" id="closeRight2"><i class="fa fa-angle-right"></i></a></h3>
@@ -303,10 +303,11 @@
                             </li>
                         @endcan
                         
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Recording</p><span class="arrow"></span></a>
+                        <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Recording</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="">User Logs</a></li>
+                                <li class="{{ Request::is('record/userlogs*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
                                 <li><a href="">Garbage</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div><!-- Page Sidebar Inner -->

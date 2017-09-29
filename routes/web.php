@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
 	if (\Auth::check()){
-    	return view('home');
+    	return redirect()->route('home');
 	}
 	else{
 		return view('welcome');
@@ -27,4 +27,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('trucks', 'TruckController');
+    Route::get('/record/userlogs', 'RecordController@user_index')->name('userlogs');
+    Route::get('/record/userlogs/mylogs', 'RecordController@mylogs')->name('mylogs');
+    Route::get('/record/userlogs/printlogs', 'RecordController@printlogs')->name('printlogs');
+    Route::get('/record/userlogs/show_logs', 'RecordController@show_logs')->name('show_logs');
 });

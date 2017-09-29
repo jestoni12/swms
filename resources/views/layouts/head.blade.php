@@ -25,6 +25,7 @@
 <link href="{{ asset('assets/css//themes/dark.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
 
+@yield('head_link')
 <link href="{{asset('assets/images/swms-logo.png')}}" rel="icon" type="image">
 <script src="{{ asset('assets/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
 <script src="{{ asset('assets/plugins/offcanvasmenueffects/js/snap.svg-min.js') }}"></script>

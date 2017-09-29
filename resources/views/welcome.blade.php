@@ -57,7 +57,7 @@
         </div>
         
         <!-- JavaScript Includes -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/clock/js/moment.js') }}"></script>
         <script src="{{ asset('assets/plugins/clock/js/script.js') }}"></script>
 

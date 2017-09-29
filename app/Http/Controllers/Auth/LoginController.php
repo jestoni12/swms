@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\UserLog;
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -46,5 +47,25 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    protected function redirectTo()
+    {
+        $log = new UserLog;
+        $log->user_id = \Auth::user()->id;
+        $log->status = 'in';
+        $log->save();
+    }
+    public function logout(Request $request) {
+        $log = new UserLog;
+        $log->user_id = \Auth::user()->id;
+        $log->status = 'out';
+        $log->save();
+        
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        
+        return redirect('/');
     }
 }
