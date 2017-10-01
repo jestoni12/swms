@@ -31,4 +31,11 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('/record/userlogs/mylogs', 'RecordController@mylogs')->name('mylogs');
     Route::get('/record/userlogs/printlogs', 'RecordController@printlogs')->name('printlogs');
     Route::get('/record/userlogs/show_logs', 'RecordController@show_logs')->name('show_logs');
+    Route::get('/record/fertilizer/index', 'RecordController@fertilizer')->name('fertilizer');
+    Route::get('/record/fertilizer/create_fertilizer', 'RecordController@create_fertilizer')->name('create_fertilizer');
+    Route::post('/record/fertilizer/create_fertilizer', 'RecordController@store_fertilizer')->name('store_fertilizer');
+
+    Route::get('/record/garbage/index', 'RecordController@garbage')->name('garbage');
+    Route::get('/record/garbage/create_garbage', 'RecordController@create_garbage')->name('create_garbage');
+    Route::post('/record/garbage/create_garbage', 'RecordController@store_garbage')->name('store_garbage');
 });

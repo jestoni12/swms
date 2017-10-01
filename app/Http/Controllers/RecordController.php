@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserLog;
 use PDF;
+use Auth;
 class RecordController extends Controller
 {
 	public function __construct(){
@@ -31,5 +32,26 @@ class RecordController extends Controller
 
     public function show_logs(){
     	return view('record.userlog.show_logs');
+    }
+
+    /* Fertilizer*/
+
+    public function fertilizer(){
+        return view('record.fertilizer.index');
+    }
+
+    public function create_fertilizer(){
+        $id = Auth::user()->id;
+        return view('record.fertilizer.new');
+    }
+
+    /* Garbage*/
+    public function garbage(){
+        return view('record.garbage.index');
+    }
+
+    public function create_garbage(){
+        $id = Auth::user()->id;
+        return view('record.garbage.new');
     }
 }
