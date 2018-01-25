@@ -15,6 +15,14 @@
 
 @section('content')
     <div class="result-set">
+        <div class="row">
+            <div class="col-sm-1">
+                <a href="{{route('print_user')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Print</a>
+            </div>
+            <div class="col-sm-1" style="padding-bottom:10px;">
+                <a href="{{route('print_user_barcode')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Print Barcode</a>
+            </div>
+        </div>
         <table class="table table-striped table-hover" id="data-table">
             <thead>
             <tr>
@@ -32,8 +40,8 @@
             @foreach($result as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->firstname }} {{ $item->middlename }} {{ $item->lastname }}</td>
-                    <td>{{ $item->username }}</td>
+                    <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
+                    <td>{{ ucfirst($item->username) }}</td>
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     <td>{{ $item->created_at->toFormattedDateString() }}</td>
 

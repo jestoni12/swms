@@ -9,7 +9,7 @@
 @section('content_header_link')
     <li class="active">List</a></li>
     @can('add_users')
-        <li><a href="{{ route('trucks.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
+        <li><a href="{{ route('trucks.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create Trucks</a></li>
     @endcan
 @endsection
 

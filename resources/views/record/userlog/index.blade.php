@@ -8,7 +8,6 @@
 
 @section('content_header_link')
     <li class="active">List</a></li>
-    <li><a href="{{ route('mylogs') }}" style="color:#08A7C3">My Logs</a></li>
 @endsection
 
 @section('content')
@@ -19,7 +18,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Role</th>
-                <th>Current Logged Date Time</th>
+                <th>Last Logged Date Time</th>
                 <th>Log Status</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -31,7 +30,7 @@
                 ?>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->firstname }} {{ $item->middlename }} {{ $item->lastname }}</td>
+                    <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     @if($log)
                         <td>{{ date('l, F d Y | H:i:s A', strtotime($log['created_at'])) }}</td>
@@ -41,10 +40,12 @@
                         <td></td>
                     @endif
                     <td class="text-center">
-                        <a href="{{ route('show_logs')  }}" class="btn btn-xs btn-info">
-                            <i class="fa fa-file-text"></i> View</a>
-                        <a href="{{ route('printlogs')  }}" class="btn btn-xs btn-info">
-                            <i class="fa fa-print"></i> Print</a>
+                        @can('view_user_logs')
+                            <a href="{{ route('show_logs')  }}" class="btn btn-xs btn-info">
+                                <i class="fa fa-file-text"></i> View</a>
+                            <a href="{{ route('printlogs')  }}" target="_blank" class="btn btn-xs btn-info">
+                                <i class="fa fa-print"></i> Print</a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

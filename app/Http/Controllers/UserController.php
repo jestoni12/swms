@@ -8,7 +8,7 @@ use App\Permission;
 use App\Authorizable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 class UserController extends Controller
 {
     use Authorizable;
@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $result = User::latest()->paginate($this->page_num);
+        $result = User::latest()->orderBy('id','desc')->paginate($this->page_num);
         return view('user.index', compact('result'));
     }
 
@@ -186,5 +186,21 @@ class UserController extends Controller
         $user->syncRoles($roles);
 
         return $user;
+    }
+
+    public function print(){
+        $users = User::all();
+
+        $pdf = PDF::setPaper("letter");
+        $pdf->loadView('user.print',compact('users'));
+        return $pdf->stream();
+    }
+
+    public function print2(){
+        $users = User::all();
+
+        $pdf = PDF::setPaper("letter");
+        $pdf->loadView('user.print_barcode',compact('users'));
+        return $pdf->stream();
     }
 }

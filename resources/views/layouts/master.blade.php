@@ -184,50 +184,6 @@
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right">4</span></a>
-                                    <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-                                        <li><p class="drop-title">You have 1 new  messages !</p></li>
-                                        <li class="dropdown-menu-list slimscroll messages">
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="msg-img"><div class="online on"></div><img class="img-circle" src="assets/images/avatar2.png" alt=""></div>
-                                                        <p class="msg-name">Bogart</p>
-                                                        <p class="msg-text">Hey ! This is test message</p>
-                                                        <p class="msg-time">3 minutes ago</p>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="drop-all"><a href="#" class="text-center">All Messages</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-success pull-right">3</span></a>
-                                    <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-                                        <li><p class="drop-title">You have 2 pending tasks !</p></li>
-                                        <li class="dropdown-menu-list slimscroll tasks">
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="task-icon badge badge-success"><i class="icon-user"></i></div>
-                                                        <span class="badge badge-roundless badge-default pull-right">1min ago</span>
-                                                        <p class="task-details">New user registered. (test)</p>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="task-icon badge badge-danger"><i class="icon-energy"></i></div>
-                                                        <span class="badge badge-roundless badge-default pull-right">24min ago</span>
-                                                        <p class="task-details">Database error.(test)</p>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="drop-all"><a href="#" class="text-center">All Tasks</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
                                     <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                                         <span class="user-name">{{ Auth::user()->username }}<i class="fa fa-angle-down"></i></span>
                                         <img class="img-circle avatar" src="{{ asset('assets/images/swms-logo.png') }}" width="40" height="40" alt="">
@@ -292,6 +248,17 @@
                                 <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
                             </li>
                         @endcan
+                        @can('view_jobs')
+                            <li class="{{ Request::is('jobs*') ? 'active' : '' }}">
+                                <a href="{{route('jobs')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-tasks"></span><p>Jobs</p></a>
+                            </li>
+                        @endcan
+                        @can('view_employees')
+                            <li class="{{ Request::is('employees*') ? 'active' : '' }}">
+                                <a href="{{route('employees')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employees</p></a>
+                            </li>
+                        @endcan
+
                         @can('view_roles')
                             <li class="{{ Request::is('roles*') ? 'active' : '' }}">
                                 <a href="{{ route('roles.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
@@ -302,14 +269,36 @@
                                 <a href="{{ route('trucks.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
                             </li>
                         @endcan
-                        
-                        <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Recording</p><span class="arrow"></span></a>
-                            <ul class="sub-menu">
-                                <li class="{{ Request::is('record/userlogs*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
-                                <li class="{{ Request::is('record/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer</a></li>
-                                <li class="{{ Request::is('record/garbage*') ? 'active' : '' }}""><a href="{{ route('garbage') }}">Garbage Weigh In</a></li>
-                            </ul>
-                        </li>
+                        @can('view_fertilizers','view_garbages','view_user_logs')
+                            <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-book"></span><p>Records</p><span class="arrow"></span></a>
+                                <ul class="sub-menu">
+                                    @can('view_user_logs')
+                                        <li class="{{ Request::is('record/userlogs*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
+                                    @endcan
+                                    @can('view_fertilizers')
+                                        <li class="{{ Request::is('record/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer</a></li>
+                                    @endcan
+                                    @can('view_garbages')
+                                        <li class="{{ Request::is('record/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Garbage</a></li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcan
+                        @can('view_fertilizer_report','view_garbage_report')
+                            <li  style="margin-bottom:100px;" class="droplink {{ Request::is('reports*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-file"></span><p>Reports</p><span class="arrow"></span></a>
+                                <ul class="sub-menu">
+                                    @can('view_fertilizer_report')
+                                        <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer_report') }}" target="_blank">Fertilizer Report</a></li>
+                                    @endcan
+                                    @can('view_garbage_report')
+                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage_report') }}" target="_blank">Garbage Report</a></li>
+                                    @endcan
+                                    @can('view_emp_dtr_report')
+                                        <li class="{{ Request::is('reports/employee_dtr*') ? 'active' : '' }}"><a href="{{ route('employee_dtr') }}" target="_blank">Employee Dtr Report</a></li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        @endcan
                     </ul>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
@@ -327,7 +316,7 @@
                     @yield('content')
                 </div><!-- Main Wrapper -->
                 <div class="page-footer">
-                    <p class="no-s">2017 &copy; Bs Information Technology</p>
+                    <p class="no-s"><?php $date = date('Y') ?> {{ $date }}  &copy; BS Information Technology</p>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->

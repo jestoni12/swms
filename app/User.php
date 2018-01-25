@@ -30,4 +30,16 @@ class User extends Authenticatable
     public function userlogs(){
         return $this->hasMany(UserLog::class,'user_id');
     }
+
+    public function fertilizers(){
+        return $this->hasMany(Fertilizer::class);
+    }
+
+    public function garbages(){
+        return $this->hasMany(Garbage::class);
+    }
+
+    public function jobs(){
+        return $this->hasMany(Job::class);
+    }
 }

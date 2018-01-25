@@ -23,11 +23,18 @@
                     ?>
 
                     <div class="col-md-3">
+                        @if($perm->name == 'add_fertilizer_report' || $perm->name == 'edit_fertilizer_report' || $perm->name == 'delete_fertilizer_report' || $perm->name == 'add_garbage_report' || $perm->name == 'edit_garbage_report' || $perm->name == 'delete_garbage_report' || $perm->name == 'add_emp_dtr_report' || $perm->name == 'edit_emp_dtr_report' || $perm->name == 'delete_emp_dtr_report')
                         <div class="checkbox">
-                            <label class="{{ str_contains($perm->name, 'delete') ? 'text-danger' : '' }}">
-                                <input type="checkbox" name="permissions[]" {{isset($options) ? 'disabled' : ''}} style="background-color: transparent;" class="form-control" {{($per_found) ? 'checked' : ''}} value="{{$perm->name}}"> {{$perm->name}}
-                            </label>
-                        </div>
+                                <label class="{{ str_contains($perm->name, 'delete') ? 'text-danger' : '' }}">
+                                </label>
+                            </div>
+                        @else
+                            <div class="checkbox">
+                                <label class="{{ str_contains($perm->name, 'delete') ? 'text-danger' : '' }}">
+                                    <input type="checkbox" name="permissions[]" {{isset($options) ? 'disabled' : ''}} style="background-color: transparent;" class="form-control" {{($per_found) ? 'checked' : ''}} value="{{$perm->name}}"> {{$perm->name}}
+                                </label>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>
