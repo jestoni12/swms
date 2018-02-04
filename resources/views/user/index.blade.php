@@ -17,9 +17,9 @@
     <div class="result-set">
         <div class="row">
             <div class="col-sm-1">
-                <a href="{{route('print_user')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Print</a>
+                <a href="{{route('print_user')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> List of User</a>
             </div>
-            <div class="col-sm-1" style="padding-bottom:10px;">
+            <div class="col-sm-1" style="padding-bottom:10px;display: none;">
                 <a href="{{route('print_user_barcode')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Print Barcode</a>
             </div>
         </div>
@@ -30,6 +30,7 @@
                 <th>Name</th>
                 <th>Username</th>
                 <th>Role</th>
+                <th>Status</th>
                 <th>Created At</th>
                 @can('edit_users', 'delete_users')
                 <th class="text-center">Actions</th>
@@ -43,6 +44,7 @@
                     <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
                     <td>{{ ucfirst($item->username) }}</td>
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
+                    <td>{{ $item->status }}</td>
                     <td>{{ $item->created_at->toFormattedDateString() }}</td>
 
                     @can('edit_users')

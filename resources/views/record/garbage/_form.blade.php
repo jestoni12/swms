@@ -10,17 +10,6 @@
         @endif
     </div>
 </div>
-<div class="form-group{{ $errors->has('remarks') ? ' has-error' : '' }}">
-    <label class="control-label col-sm-3" for="remarks">Remarks:</label>
-    <div class="col-sm-9">
-        <input type="text" class="form-control" id="remarks" placeholder="Remarks" required name="remarks" value="{{ isset($garbage) ? $garbage->remarks : old('remarks') }}">
-        @if ($errors->has('remarks'))
-            <span class="help-block">
-                <strong>{{ $errors->first('remarks') }}</strong>
-            </span>
-        @endif
-    </div>
-</div>
 <div class="form-group{{ $errors->has('total_weight') ? ' has-error' : '' }}">
     <label class="control-label col-sm-3" for="total_weight">Total Garbage Weight:</label>
     <div class="col-sm-9">
@@ -50,6 +39,17 @@
         @if ($errors->has('biodegradable_weight'))
             <span class="help-block">
                 <strong>{{ $errors->first('biodegradable_weight') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group{{ $errors->has('remarks') ? ' has-error' : '' }}">
+    <label class="control-label col-sm-3" for="remarks">Remarks:</label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="remarks" placeholder="Remarks" name="remarks" value="{{ isset($garbage) ? $garbage->remarks : old('remarks') }}">
+        @if ($errors->has('remarks'))
+            <span class="help-block">
+                <strong>{{ $errors->first('remarks') }}</strong>
             </span>
         @endif
     </div>

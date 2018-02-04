@@ -23,20 +23,22 @@
 	<table class="table table-striped table-hover" id="data-table">
             <thead>
             <tr>
-                <th>Id</th>
+                <th>User ID</th>
                 <th>Name</th>
                 <th>Username</th>
                 <th>Role</th>
+                <th>Status</th>
                 <th>Created At</th>
             </tr>
             </thead>
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
+                    <td style="padding-left: 30px;">{{ $user->id }}</td>
                     <td>{{ ucfirst($user->firstname) }} {{ ucfirst($user->middlename) }} {{ ucfirst($user->lastname) }}</td>
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->roles->implode('name', ', ') }}</td>
+                    <td>{{ $user->status }}</td>
                     <td>{{ $user->created_at->toFormattedDateString() }}</td>
                 </tr>
             @endforeach

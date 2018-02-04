@@ -266,7 +266,7 @@
                         @endcan
                         @can('view_trucks')
                             <li class="{{ Request::is('trucks*') ? 'active' : '' }}">
-                                <a href="{{ route('trucks.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
+                                <a href="{{ route('trucks.index') }}" class="waves-effect waves-button" style="display: none;"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
                             </li>
                         @endcan
                         @can('view_fertilizers','view_garbages','view_user_logs')

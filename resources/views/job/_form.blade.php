@@ -2,6 +2,7 @@
 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
     <label class="control-label col-sm-3" for="description">Job Description:</label>
     <div class="col-sm-9">
+        <input type="hidden" name="job_id" value="{{ isset($jobs) ? $jobs->id : '' }}">
         <input type="text" class="form-control" id="description" placeholder="Description" required name="description" value="{{ isset($jobs) ? $jobs->description : old('description') }}">
         @if ($errors->has('description'))
             <span class="help-block">

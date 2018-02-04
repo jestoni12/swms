@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $result = User::latest()->orderBy('id','desc')->paginate($this->page_num);
+        $result = User::where('status','Active')->latest()->orderBy('id','desc')->paginate($this->page_num);
         return view('user.index', compact('result'));
     }
 
@@ -105,13 +105,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $this->validate($request, [
             'firstname' => 'required|min:1',
             'lastname' => 'required|min:1',
             'username' => 'required|unique:users,username,' . $id,
-            'roles' => 'required|min:1'
+            'roles' => 'required|min:1',
+            'status' => 'required'
         ]);
 
         // Get the user
@@ -119,7 +119,7 @@ class UserController extends Controller
 
         // Update user
         $user->fill($request->except('roles', 'permissions', 'password'));
-
+        $user->status = $request->input('status');
         // check for password change
         if($request->get('password')) {
             $user->password = bcrypt($request->get('password'));

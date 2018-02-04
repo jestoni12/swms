@@ -26,7 +26,7 @@
                 @foreach($jobs as $job)
                     <tr>
                         <td>{{ $job->id }}</td>
-                        <td>{{ $job->description }}</td>
+                        <td>{{ ucfirst($job->description) }}</td>
                         <td>{{ $job->status }}</td>
                         <td>{{ $job->created_at }}</td>
                         <td>

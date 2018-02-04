@@ -51,7 +51,6 @@ class RecordController extends Controller
         if($request->input('save_fertilizer')){
             $this->validate($request, [
                 'name' => 'required|min:1',
-                'remarks' => 'required|min:5',
                 'generated_kilo' => 'required'
             ]);
 
@@ -74,7 +73,6 @@ class RecordController extends Controller
         if($request->input("edit_fertilizer")){
             $this->validate($request, [
             'name' => 'required|min:5',
-            'remarks' => 'required|min:5',
             'generated_kilo' => 'required'
         ]);
         $fertilizer = Fertilizer::find($id);
@@ -118,7 +116,6 @@ class RecordController extends Controller
     public function store_garbage(Request $request){
         $this->validate($request, [
             'description' => 'required|min:5',
-            'remarks' => 'required|min:5',
             'total_weight' => 'required',
             'recycable_weight' => 'required',
             'biodegradable_weight' => 'required'
@@ -142,7 +139,6 @@ class RecordController extends Controller
         if($request->input("edit_garbage")){
             $this->validate($request, [
                 'description' => 'required|min:5',
-                'remarks' => 'required|min:5',
                 'total_weight' => 'required',
                 'recycable_weight' => 'required',
                 'biodegradable_weight' => 'required'

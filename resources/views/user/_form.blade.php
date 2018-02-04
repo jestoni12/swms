@@ -38,6 +38,25 @@
         @endif
     </div>
 </div>
+<div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+    <label class="control-label col-sm-3" for="status">Status:</label>
+    <div class="col-sm-9">
+        <select class="form-control" name="status" placeholder="Status" id="status" required>
+            @if(isset($user))
+                <option value="Active" {{ $user->status == "Active" ? 'selected' : '' }}>Active</option>
+                <option value="Inactive" {{ $user->status == "Inactive" ? 'selected' : '' }}>Inactive</option>
+            @else
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            @endif
+        </select>
+        @if ($errors->has('status'))
+            <span class="help-block">
+                <strong>{{ $errors->first('status') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
     <label class="control-label col-sm-3" for="password">Password:</label>
     <div class="col-sm-9">

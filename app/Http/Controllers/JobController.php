@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Authorizable;
 use App\Job;
+use App\Employee;
 class JobController extends Controller
 {
 	//use Authorizable;
@@ -50,13 +51,28 @@ class JobController extends Controller
             'status' => 'required'
         ]);
         $job = Job::find($id);
-
+        $employee = Employee::where([
+                                        ['job_id',$request->input('job_id')],
+                                        ['status','active']
+                                    ])->count();
         // Update job
-        $job->fill($request->except('edit_job'));
+        $job->fill($request->except('edit_job','job_id'));
         $check = $job->getDirty();
+
         if(count($check) > 0){
-            $job->save();
-            flash()->success('Job has been updated.');
+            if($request->input('status') == 'Active'){
+                $job->save();
+                flash()->success('Job has been updated.');
+            }
+            else{
+                if($employee > 0){
+                    flash()->error('Employee still holding that job.');
+                }
+                else{
+                    $job->save();
+                    flash()->success('Job has been updated.');
+                }
+            }
         }
         else{
             flash()->info('Nothing update.');
@@ -67,10 +83,19 @@ class JobController extends Controller
     }
 
     public function delete_job($id){
-        if( Job::findOrFail($id)->delete() ) {
-            flash()->success('Job has been deleted');
-        } else {
-            flash()->success('Job not deleted');
+        $employee = Employee::where([
+                                    ['job_id',$id],
+                                    ['status','active']
+                                ])->count();
+        if($employee > 0){
+            flash()->error('Employee still holding that job.');
+        }
+        else{
+            if( Job::findOrFail($id)->delete() ) {
+                flash()->success('Job has been deleted');
+            } else {
+                flash()->success('Job not deleted');
+            }
         }
 
         return redirect()->back();
