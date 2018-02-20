@@ -61,16 +61,16 @@
                                     @if($emp->id == $result->employee_id)
                                         <tr>
                                             <td class="circle1">{{ date('m/d/y',strtotime($result->log_date)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->login1)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->logout1)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->login2)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->logout2)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->login3)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->logout3)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->login4)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->logout4)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->login5)) }}</td>
-                                            <td class="circle1">{{ date('H:i:s',strtotime($result->logout5)) }}</td>
+                                            <td class="circle1">{{ $result->login1 == '' ? '' : date('H:i:s',strtotime($result->login1)) }}</td>
+                                            <td class="circle1">{{ $result->logout1 == '' ? '' : date('H:i:s',strtotime($result->logout1)) }}</td>
+                                            <td class="circle1">{{ $result->login2 == '' ? '' : date('H:i:s',strtotime($result->login2)) }}</td>
+                                            <td class="circle1">{{ $result->logout2 == '' ? '' : date('H:i:s',strtotime($result->logout2)) }}</td>
+                                            <td class="circle1">{{ $result->login3 == '' ? '' : date('H:i:s',strtotime($result->login3)) }}</td>
+                                            <td class="circle1">{{ $result->logout3 == '' ? '' : date('H:i:s',strtotime($result->logout3)) }}</td>
+                                            <td class="circle1">{{ $result->login4 == '' ? '' : date('H:i:s',strtotime($result->login4)) }}</td>
+                                            <td class="circle1">{{ $result->logout4 == '' ? '' : date('H:i:s',strtotime($result->logout4)) }}</td>
+                                            <td class="circle1">{{ $result->login5 == '' ? '' : date('H:i:s',strtotime($result->login5)) }}</td>
+                                            <td class="circle1">{{ $result->logout5 == '' ? '' : date('H:i:s',strtotime($result->logout5)) }}</td>
                                         </tr>
                                     @endif
                                 @endforeach
