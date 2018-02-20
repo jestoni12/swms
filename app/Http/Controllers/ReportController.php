@@ -12,6 +12,9 @@ use Response;
 class ReportController extends Controller
 {
     public function fertilizer_report(){
+        if(!auth()->user()->hasPermission('view_fertilizer_report')){
+            abort(403);
+        }
     	$results = Fertilizer::all();
         $pdf = PDF::setPaper('letter');
         $pdf->loadView('reports.fertilizer_report',compact('results'));

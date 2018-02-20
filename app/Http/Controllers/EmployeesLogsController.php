@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 use App\EmployeesLog;
+use Auth;
 class EmployeesLogsController extends Controller
 {
 	public function __construct(){
@@ -13,7 +14,12 @@ class EmployeesLogsController extends Controller
 	}
 
     public function display_view(){
-    	return view('welcome');
+    	if(Auth::check()){
+    		return view('home');
+    	}
+    	else{
+    		return view('welcome');
+    	}
     }
     public function managelogs(Request $request){ 
     	$id = $request->input('id');
