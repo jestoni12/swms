@@ -12,6 +12,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "milon/barcode": "^5.3",
+        "niklasravnsborg/laravel-pdf": "^2.0",
         "spatie/laravel-permission": "^1.13"
     },
     "require-dev": {

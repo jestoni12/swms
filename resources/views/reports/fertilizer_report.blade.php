@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Fertilizer Reports</title>
@@ -37,10 +37,10 @@
             @foreach($results as $result)
                 <tr>
                     <td>{{ $result->id }}</td>
-                    <td>{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
-                    <td>{{ $result->name }}</td>
-                    <td>{{ $result->remarks }}</td>
-                    <td>{{ $result->generated_kilo }}</td>
+                    <td style="text-align: center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
+                    <td style="text-align: center;">{{ $result->name }}</td>
+                    <td style="text-align: center;">{{ $result->remarks }}</td>
+                    <td style="text-align: center;">{{ $result->generated_kilo }}</td>
                     <td>{{ $result->created_at->toFormattedDateString() }}</td>
                 </tr>
             @endforeach
