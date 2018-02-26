@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>User's List</title>
@@ -14,32 +14,40 @@
 	h2{
 		text-align: center;
 	}
+    .circle2{
+        border-bottom: 1px solid black;
+    }
+    .circle1{
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
 </style>
 <body>
 	<div>
 		<h2>List Of Users</h2>
 	</div>
 	<br/>
-	<table class="table table-striped table-hover" id="data-table">
+	<table class="circle1" id="data-table">
         <thead>
         <tr>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Created At</th>
+            <th class="circle2">User ID</th>
+            <th class="circle2">Name</th>
+            <th class="circle2">Username</th>
+            <th class="circle2">Role</th>
+            <th class="circle2">Status</th>
+            <th class="circle2">Created At</th>
         </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td style="padding-left: 30px;">{{ $user->id }}</td>
-                <td>{{ ucfirst($user->firstname) }} {{ ucfirst($user->middlename) }} {{ ucfirst($user->lastname) }}</td>
-                <td>{{ $user->username }}</td>
-                <td>{{ $user->roles->implode('name', ', ') }}</td>
-                <td>{{ $user->status }}</td>
-                <td>{{ $user->created_at->toFormattedDateString() }}</td>
+                <td class="circle2" style="padding-left: 30px;">{{ $user->id }}</td>
+                <td class="circle2">{{ ucfirst($user->firstname) }} {{ ucfirst($user->middlename) }} {{ ucfirst($user->lastname) }}</td>
+                <td class="circle2">{{ $user->username }}</td>
+                <td class="circle2">{{ $user->roles->implode('name', ', ') }}</td>
+                <td class="circle2">{{ $user->status }}</td>
+                <td class="circle2">{{ $user->created_at->toFormattedDateString() }}</td>
             </tr>
         @endforeach
         </tbody>

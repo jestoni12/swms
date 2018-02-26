@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Employee Barcode</title>
@@ -16,25 +16,33 @@
 		text-align: center;
         font-size: 16px;
 	}
+    .circle2{
+        border-bottom: 1px solid black;
+    }
+    .circle1{
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
 </style>
 <body>
 	<div>
 		<h2>Employee Barcode</h2>
 	</div>
 	<br/>
-	<table class="table table-striped table-hover" id="data-table" style="">
+	<table class="circle1" id="data-table" style="">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>User</th>
-                <th>Generated Barcode</th>
+                <th class="circle2">ID</th>
+                <th class="circle2">User</th>
+                <th class="circle2">Generated Barcode</th>
             </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $results->id }}</td>
-                    <td>{{ ucfirst($results->firstname) }} {{ ucfirst($results->middlename) }} {{ ucfirst($results->lastname) }}</td>
-                    <td><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($results->id, 'C39')}}" alt="barcode" /></td>
+                    <td class="circle2">{{ $results->id }}</td>
+                    <td class="circle2">{{ ucfirst($results->firstname) }} {{ ucfirst($results->middlename) }} {{ ucfirst($results->lastname) }}</td>
+                    <td class="circle2"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($results->id, 'C39')}}" alt="barcode" /></td>
                 </tr>
             </tbody>
         </table>

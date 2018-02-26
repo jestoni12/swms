@@ -86,8 +86,13 @@ class EmployeeController extends Controller
 
     public function print_barcode($id){
         $results = Employee::find($id);
-        $pdf = PDF::setPaper('letter');
-        $pdf->loadView('employee.print_barcode',compact('results'));
-        return $pdf->stream();
+        // $pdf = PDF::setPaper('letter');
+        // $pdf->loadView('employee.print_barcode',compact('results'));
+        // return $pdf->stream();
+
+        $pdf = PDF::loadView('employee.print_barcode',compact('results'), [], [
+            'format' => 'letter'
+        ]);
+        return $pdf->stream('emp_barcode.pdf');
     }
 }

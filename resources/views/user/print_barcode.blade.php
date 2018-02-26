@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>User's barcode</title>
@@ -16,20 +16,28 @@
 	h2{
 		text-align: center;
 	}
+    .circle2{
+        border-bottom: 1px solid black;
+    }
+    .circle1{
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
 </style>
 <body>
 	<div>
 		<h2>List Of User's Barcode</h2>
 	</div>
 	<br/>
-	<table class="table table-striped table-hover" id="data-table">
+	<table class="circle1" id="data-table">
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td width="30%">
+                <td width="30%" class="circle2">
                     <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($user->id, "EAN13",2,60) }}" alt="barcode"   />
                 </td>
-                <td width="70%">
+                <td width="70%" class="circle2">
                     <div>
                        ID No. : {{str_pad($user->id,4,'0',STR_PAD_LEFT)}}
                     </div>

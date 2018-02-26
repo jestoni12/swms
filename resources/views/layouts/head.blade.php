@@ -19,6 +19,7 @@
 <link href="{{ asset('assets/plugins/switchery/dist/switchery.min2.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('assets/plugins/3d-bold-navigation/css/style2.css') }}" rel="stylesheet" type="text/css"/>	
 <link href="{{ asset('assets/plugins/slidepushmenus/css/component2.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('assets/plugins/jquery-ui/jquery-ui.css') }}" rel="stylesheet" type="text/css"/>
 
 <!-- Theme Styles -->
 <link href="{{ asset('assets/css/modern.min2.css') }}" rel="stylesheet" type="text/css"/>

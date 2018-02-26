@@ -191,16 +191,26 @@ class UserController extends Controller
     public function print(){
         $users = User::all();
 
-        $pdf = PDF::setPaper("letter");
-        $pdf->loadView('user.print',compact('users'));
-        return $pdf->stream();
+        // $pdf = PDF::setPaper("letter");
+        // $pdf->loadView('user.print',compact('users'));
+        // return $pdf->stream();
+
+        $pdf = PDF::loadView('user.print',compact('users'), [], [
+            'format' => 'letter'
+        ]);
+        return $pdf->stream('list_user.pdf');
     }
 
     public function print2(){
         $users = User::all();
 
-        $pdf = PDF::setPaper("letter");
-        $pdf->loadView('user.print_barcode',compact('users'));
-        return $pdf->stream();
+        // $pdf = PDF::setPaper("letter");
+        // $pdf->loadView('user.print_barcode',compact('users'));
+        // return $pdf->stream();
+
+        $pdf = PDF::loadView('user.print_barcode',compact('users'), [], [
+            'format' => 'letter'
+        ]);
+        return $pdf->stream('list_user_barcode.pdf');
     }
 }

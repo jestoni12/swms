@@ -16,35 +16,41 @@
 		text-align: center;
         font-size: 16px;
 	}
+    .circle2{
+        border-bottom: 1px solid black;
+    }
+    .circle1{
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
 </style>
 <body>
 	<div>
 		<h2>List of Fertilizer</h2>
 	</div>
 	<br/>
-	<table class="table table-striped table-hover" id="data-table" style="">
-            <thead>
+	<table class="circle1" cellspacing="0" cellpadding="0">
+        <thead>
             <tr>
-                <th>ID</th>
-                <th>User</th>
-                <th>Description</th>
-                <th>Remarks</th>
-                <th>Generated Kilo</th>
-                <th>Created At</th>
+                <th class="circle2">USER</th>
+                <th class="circle2">FERTILZERS NAME</th>
+                <th class="circle2">GENERATED KILO</th>
+                <th class="circle2">DATE CREATED</th>
+                <th class="circle2">REMARKS</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             @foreach($results as $result)
                 <tr>
-                    <td>{{ $result->id }}</td>
-                    <td style="text-align: center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
-                    <td style="text-align: center;">{{ $result->name }}</td>
-                    <td style="text-align: center;">{{ $result->remarks }}</td>
-                    <td style="text-align: center;">{{ $result->generated_kilo }}</td>
-                    <td>{{ $result->created_at->toFormattedDateString() }}</td>
+                    <td class="circle2" style="text-align: center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
+                    <td class="circle2" style="text-align: center;">{{ $result->name }}</td>
+                    <td class="circle2" style="text-align: center;">{{ $result->generated_kilo }}</td>
+                    <td class="circle2" style="text-align: center;">{{ $result->created_at->toFormattedDateString() }}</td>
+                    <td class="circle2" style="text-align: center;">{{ $result->remarks }}</td>
                 </tr>
             @endforeach
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </body>
 </html>

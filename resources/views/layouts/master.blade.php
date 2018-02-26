@@ -91,7 +91,7 @@
                     </div>
                     <div class="topmenu-outer">
                         <div class="top-menu">
-                            <ul class="nav navbar-nav navbar-left">
+                            <ul class="nav navbar-nav navbar-left" style="display: none;">
                                 <li>		
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
                                 </li>
@@ -181,7 +181,7 @@
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>	
-                                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search" style="display: none;"><i class="fa fa-search"></i></a>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
@@ -190,16 +190,15 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-list" role="menu">
                                         <li role="presentation">
-                                            <a href=""><i class="fa fa-user"></i>Profile</a>
+                                            <a href="" style="display: none;"><i class="fa fa-user"></i>Profile</a>
                                         </li>
                                         <li role="presentation">
-                                            <a href=""><i class="fa fa-calendar"></i>Calendar</a>
+                                            <a href="" style="display: none;"><i class="fa fa-calendar"></i>Calendar</a>
                                         </li>
                                         <li role="presentation">
-                                            <a href=""><i class="fa fa-cog"></i>Setting</a>
+                                            <a href="" style="display: none;"><i class="fa fa-cog"></i>Setting</a>
                                         </li>
-                                        <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a href=""><i class="fa fa-lock"></i>Lock screen</a></li>
+                                        <li role="presentation"><a href="" style="display: none;"><i class="fa fa-lock"></i>Lock screen</a></li>
                                         <li role="presentation">
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out m-r-xs"></i>Log out
                                             </a>
@@ -216,7 +215,7 @@
             </div><!-- Navbar -->
             <div class="page-sidebar sidebar">
                 <div class="page-sidebar-inner slimscroll">
-                    <div class="sidebar-header">
+                    <div class="sidebar-header" style="display: none;">
                         <div class="sidebar-profile">
                             <a href="javascript:void(0);" id="profile-menu-link">
                                 <div class="sidebar-profile-image">
@@ -240,41 +239,36 @@
                         </div>
                     </div>
                     <ul class="menu accordion-menu">
-                        <li class="{{ Request::is('home*') ? 'active' : '' }}">
-                            <a href="" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a>
-                        </li>
-                        @can('view_users')
-                            <li class="{{ Request::is('users*') ? 'active' : '' }}">
-                                <a href="{{route('users.index')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p></a>
+                        @can('view_users','view_roles','view_user_logs')
+                            <li class="droplink {{ Request::is('users*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>User Management</p><span class="arrow"></span></a>
+                                <ul class="sub-menu">
+                                    @can('view_users')
+                                        <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
+                                    @endcan
+                                    @can('view_roles')
+                                        <li class="{{ Request::is('roles*') ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li>
+                                    @endcan
+                                    @can('view_user_logs')
+                                        <li class="{{ Request::is('record/userlog*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
+                                    @endcan
+                                </ul>
                             </li>
                         @endcan
-                        @can('view_jobs')
-                            <li class="{{ Request::is('jobs*') ? 'active' : '' }}">
-                                <a href="{{route('jobs')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-tasks"></span><p>Jobs</p></a>
+                        @can('view_jobs','view_employees')
+                            <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
+                                <ul class="sub-menu">
+                                    @can('view_employees')
+                                        <li class="{{ Request::is('employees*') ? 'active' : '' }}"><a href="{{ route('employees') }}">Employees</a></li>
+                                    @endcan
+                                    @can('view_jobs')
+                                        <li class="{{ Request::is('jobs*') ? 'active' : '' }}"><a href="{{ route('jobs') }}">Jobs</a></li>
+                                    @endcan
+                                </ul>
                             </li>
                         @endcan
-                        @can('view_employees')
-                            <li class="{{ Request::is('employees*') ? 'active' : '' }}">
-                                <a href="{{route('employees')}}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employees</p></a>
-                            </li>
-                        @endcan
-
-                        @can('view_roles')
-                            <li class="{{ Request::is('roles*') ? 'active' : '' }}">
-                                <a href="{{ route('roles.index') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-lock"></span><p>Roles</p></a>
-                            </li>
-                        @endcan
-                        @can('view_trucks')
-                            <li class="{{ Request::is('trucks*') ? 'active' : '' }}">
-                                <a href="{{ route('trucks.index') }}" class="waves-effect waves-button" style="display: none;"><span class="menu-icon glyphicon glyphicon-inbox"></span><p>Trucks</p></a>
-                            </li>
-                        @endcan
-                        @can('view_fertilizers','view_garbages','view_user_logs')
+                        @can('view_fertilizers','view_garbages')
                             <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-book"></span><p>Records</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
-                                    @can('view_user_logs')
-                                        <li class="{{ Request::is('record/userlogs*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
-                                    @endcan
                                     @can('view_fertilizers')
                                         <li class="{{ Request::is('record/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer</a></li>
                                     @endcan
@@ -284,7 +278,7 @@
                                 </ul>
                             </li>
                         @endcan
-                        @can('view_fertilizer_report','view_garbage_report')
+                        @can('view_fertilizer_report','view_garbage_report','view_emp_dtr_report')
                             <li  style="margin-bottom:100px;" class="droplink {{ Request::is('reports*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-file"></span><p>Reports</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     @can('view_fertilizer_report')
