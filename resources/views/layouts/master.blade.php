@@ -285,10 +285,10 @@
                                         <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="#" data-toggle="modal" data-target="#fertilizer_print">Fertilizer Report</a></li>
                                     @endcan
                                     @can('view_garbage_report')
-                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage_report') }}" target="_blank">Garbage Report</a></li>
+                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="#" data-toggle="modal" data-target="#garbage_print">Garbage Report</a></li>
                                     @endcan
                                     @can('view_emp_dtr_report')
-                                        <li class="{{ Request::is('reports/employee_dtr*') ? 'active' : '' }}"><a href="{{ route('employee_dtr') }}" target="_blank">Employee Dtr Report</a></li>
+                                        <li class="{{ Request::is('reports/employee_dtr*') ? 'active' : '' }}"><a href="" data-toggle="modal" data-target="#emp_dtr_print_modal">Employee Dtr Report</a></li>
                                     @endcan
                                 </ul>
                             </li>
