@@ -6,17 +6,18 @@
                 <h4 class="modal-title"><b>Fertilizer Print</b></h4>
             </div>
             <div class="modal-body form-horizontal">
-                <form class="form-horizontal" autocomplete="off"  name="fertilizer_print_form" role="form"  method="POST" action="{{route('fertilizer_report')}}" target="_blank">
+                <form class="form-horizontal" autocomplete="off"  name="fertilizer_print_form" id="fertilizer_print_form" role="form"  method="POST" action="{{action('ReportController@fertilizer_report')}}" target="_blank">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date From :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control datefrom" placeholder="Date From" autofocus="">
+                             <input type="text" class="form-control datefrom" placeholder="Date From" autofocus="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date To :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control dateto" placeholder="Date To">
+                             <input type="text" class="form-control dateto" placeholder="Date To">
                         </div>
                     </div>
                </form>

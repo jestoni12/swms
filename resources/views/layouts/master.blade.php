@@ -282,7 +282,7 @@
                             <li  style="margin-bottom:100px;" class="droplink {{ Request::is('reports*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-file"></span><p>Reports</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     @can('view_fertilizer_report')
-                                        <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer_report') }}" target="_blank">Fertilizer Report</a></li>
+                                        <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="#" data-toggle="modal" data-target="#fertilizer_print">Fertilizer Report</a></li>
                                     @endcan
                                     @can('view_garbage_report')
                                         <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage_report') }}" target="_blank">Garbage Report</a></li>
@@ -372,5 +372,6 @@
         </nav>
         <div class="cd-overlay"></div>
         @include('layouts.script')
+        @include('layouts.modalfunction')
     </body>
 </html>

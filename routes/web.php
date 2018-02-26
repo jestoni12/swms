@@ -66,7 +66,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::post('/employees/barcode={id}','EmployeeController@print_barcode')->name('print_barcode');
 
     Route::get('/reports','ReportController@index')->name('reports');
-    Route::get('/reports/fertilizer','ReportController@fertilizer_report')->name('fertilizer_report');
+    Route::post('/reports/fertilizer','ReportController@fertilizer_report')->name('fertilizer_report');
     Route::get('/reports/garbage','ReportController@garbage_report')->name('garbage_report');
     Route::get('/reports/employee_dtr','ReportController@employee_dtr')->name('employee_dtr');
 });
