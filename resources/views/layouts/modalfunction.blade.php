@@ -88,35 +88,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    // $(document).ready(function(){
-    //     $('.datefrom').datepicker({
-    //         dateFormat: "M-dd-yy",
-    //         yearRange: "1950:2050",
-    //         changeYear: true,
-    //         changeMonth: true,
-    //     });
-
-    //     $('.dateto').datepicker({
-    //         dateFormat: "M-dd-yy",
-    //         yearRange: "1950:2050",
-    //         changeYear: true,
-    //         changeMonth: true,
-        });
-
-        // $('.datefrom').datepicker({
-        //     changeYear: true,
-        //     yearRange: "1950:2050",
-        //     showButtonPanel: true,
-        //     dateFormat: 'yy'
-        // }).focus(function() {
-        //     var thisCalendar = $(this);
-        //     $('.ui-datepicker-calendar').detach();
-        //     $('.ui-datepicker-month').remove();
-        //     $('.ui-datepicker-close').click(function() {
-        //         var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-        //         thisCalendar.datepicker('setDate', new Date(year, 1));
-        //     });
-        // });
-    });
-</script>

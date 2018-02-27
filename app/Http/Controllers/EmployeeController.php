@@ -95,4 +95,12 @@ class EmployeeController extends Controller
         ]);
         return $pdf->stream('emp_barcode.pdf');
     }
+
+    public function listofemployeeprint(){
+        $results = Employee::all();
+        $pdf = PDF::loadView('employee.print_barcode_all',compact('results'), [], [
+            'format' => 'letter'
+        ]);
+        return $pdf->stream('emp_list_barcode.pdf');
+    }
 }

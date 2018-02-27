@@ -12,6 +12,11 @@
 
 @section('content')
     <div class="result-set">
+        <div class="row">
+            <div class="col-sm-1">
+                <a href="{{route('listofemployeeprint')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> List of Employees</a>
+            </div>
+        </div>
         <table class="table table-striped table-hover" id="data-table">
             <thead>
                 <tr>
@@ -44,7 +49,7 @@
                                     </button>
                                 </form>
                             @endcan
-                            @can('add_employess')
+                            @can('add_employees')
                                 <a href="#" data-toggle="modal" data-target="#barcode" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-qrcode"></i> Barcode</a>
                             @endcan
                         </td>
@@ -67,15 +72,15 @@
                         <!-- name Form Input -->
                         <div class="form-group">
                             <div class="container text-center" style="border: 1px solid #a1a1a1;padding: 15px;width: 70%;">
-                                <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($emp->id, 'C39')}}" alt="barcode" />
+                                <form action="{{route('print_barcode',$emp->id)}}" style="display: inline" method="POST" name="emp_barcode_form" id="emp_barcode_form" target="_blank">
+                                    {{csrf_field()}}
+                                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($emp->id, 'C39')}}" alt="barcode" />
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <form action="{{route('print_barcode',$emp->id)}}" style="display: inline" method="POST">
-                            {{csrf_field()}}
-                            <a><button type="submit" class="btn btn-success" name="barcode" value="barcode" target="_blank"><i class="glyphicon glyphicon-qrcode"></i> Print</button></a>
-                        </form>
+                        <a><button type="submit" class="btn btn-success" name="barcode" form="emp_barcode_form" value="barcode"><i class="glyphicon glyphicon-qrcode"></i> Print</button></a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>

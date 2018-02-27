@@ -20,7 +20,6 @@
                 <th>Role</th>
                 <th>Last Logged Date Time</th>
                 <th>Log Status</th>
-                <th class="text-center">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -41,9 +40,9 @@
                     @endif
                     <td class="text-center">
                         @can('view_user_logs')
-                            <a href="{{ route('show_logs')  }}" class="btn btn-xs btn-info">
+                            <a href="{{ route('show_logs')  }}" class="btn btn-xs btn-info" style="display: none;">
                                 <i class="fa fa-file-text"></i> View</a>
-                            <a href="{{ route('printlogs')  }}" target="_blank" class="btn btn-xs btn-info">
+                            <a href="{{ route('printlogs')  }}" target="_blank" class="btn btn-xs btn-info" style="display: none;">
                                 <i class="fa fa-print"></i> Print</a>
                         @endcan
                     </td>

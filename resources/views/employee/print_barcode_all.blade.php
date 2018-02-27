@@ -27,7 +27,7 @@
 </style>
 <body>
 	<div>
-		<h2>Employee Barcode</h2>
+		<h2>Employee List</h2>
 	</div>
 	<br/>
 	<table class="circle1" id="data-table" style="">
@@ -40,12 +40,14 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="circle2" style="text-align: center;">{{ $results->id }}</td>
-                    <td class="circle2" style="text-align: center;">{{ ucfirst($results->firstname) }} {{ ucfirst($results->middlename) }} {{ ucfirst($results->lastname) }}</td>
-                    <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($results->id, 'C39')}}" alt="barcode" /></td>
-                    <td class="circle2" style="text-align: center;">{{ $results->created_at->toFormattedDateString() }}</td>
-                </tr>
+                @foreach($results as $result)
+                    <tr>
+                        <td class="circle2" style="text-align: center;">{{ $result->id }}</td>
+                        <td class="circle2" style="text-align: center;">{{ ucfirst($result->firstname) }} {{ ucfirst($result->middlename) }} {{ ucfirst($result->lastname) }}</td>
+                        <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($result->id, 'C39')}}" alt="barcode" /></td>
+                        <td class="circle2" style="text-align: center;">{{ $result->created_at->toFormattedDateString() }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 </body>

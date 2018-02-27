@@ -64,6 +64,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('/employees/edit={id}','EmployeeController@edit_employee')->name('edit_employee');
     Route::put('/employees/edit={id}','EmployeeController@action_edit_employee')->name('action_edit_employee');
     Route::post('/employees/barcode={id}','EmployeeController@print_barcode')->name('print_barcode');
+    Route::get('/employees/listofemployeeprint','EmployeeController@listofemployeeprint')->name('listofemployeeprint');
 
     Route::get('/reports','ReportController@index')->name('reports');
     Route::post('/reports','ReportController@reports_action')->name('reports_action');
