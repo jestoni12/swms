@@ -5,7 +5,6 @@
        @include('layouts.head')
     </head>
     <body class="page-header-fixed">
-        @include('layouts.script')
         <div class="overlay"></div>
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
             <h3><span class="pull-left">Bogart Brown</span> <a href="javascript:void(0);" class="pull-right" id="closeRight2"><i class="fa fa-angle-right"></i></a></h3>
@@ -373,5 +372,6 @@
         </nav>
         <div class="cd-overlay"></div>
         @include('layouts.modalfunction')
+        @include('layouts.script')
     </body>
 </html>

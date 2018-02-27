@@ -11,5 +11,6 @@
 <script src="{{ asset('assets/plugins/offcanvasmenueffects/js/main.js') }}"></script>
 <script src="{{ asset('assets/plugins/waves/dist/waves.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/3d-bold-navigation/js/main.js') }}"></script>
+@stack('append_js')
 <script src="{{ asset('assets/js/modern.min.js') }}"></script>
 @yield('script_link')

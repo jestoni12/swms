@@ -29,7 +29,7 @@
                 <div class="form-group{{ $errors->has('total_weight') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="total_weight">Total Garbage Weight:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="total_weight" placeholder="kilogram" required name="total_weight" value="{{ isset($garbage) ? $garbage->total_weight : old('total_weight') }}">
+                        <input type="text" class="form-control total_weight" id="total_weight" placeholder="kilogram" required name="total_weight" value="{{ isset($garbage) ? $garbage->total_weight : old('total_weight') }}">
                         @if ($errors->has('total_weight'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('total_weight') }}</strong>
@@ -40,7 +40,7 @@
                 <div class="form-group{{ $errors->has('recycable_weight') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="recycable_weight">Recycable Garbage Weight:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="recycable_weight" placeholder="kilogram" required name="recycable_weight" value="{{ isset($garbage) ? $garbage->recycable_weight : old('recycable_weight') }}">
+                        <input type="text" class="form-control recycable_weight" id="recycable_weight" placeholder="kilogram" required name="recycable_weight" value="{{ isset($garbage) ? $garbage->recycable_weight : old('recycable_weight') }}">
                         @if ($errors->has('recycable_weight'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('recycable_weight') }}</strong>
@@ -51,7 +51,7 @@
                 <div class="form-group{{ $errors->has('biodegradable_weight') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="biodegradable_weight">Biodegradable Garbage Weight:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="biodegradable_weight" placeholder="kilogram" required name="biodegradable_weight" value="{{ isset($garbage) ? $garbage->biodegradable_weight : old('biodegradable_weight') }}">
+                        <input type="text" class="form-control biodegradable_weight" id="biodegradable_weight" placeholder="kilogram" required name="biodegradable_weight" value="{{ isset($garbage) ? $garbage->biodegradable_weight : old('biodegradable_weight') }}">
                         @if ($errors->has('biodegradable_weight'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('biodegradable_weight') }}</strong>
@@ -83,4 +83,31 @@
             </form>
         </div>
     </div>
+    @push('append_js')
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.recycable_weight').on('keyup', function(){
+                    var amount12 = 0;
+                    if($('.recycable_weight').val()){
+                        amount12 = $('.recycable_weight').val();
+                    }
+                    var amount1 = $('.total_weight').val();
+                    var total = parseInt(amount1) - parseInt(amount12);
+
+                    $('.biodegradable_weight').val(parseInt(total));
+                });
+
+                $('.biodegradable_weight').on('keyup', function(){
+                    var amount12 = 0;
+                    if($('.biodegradable_weight').val()){
+                        amount12 = $('.biodegradable_weight').val();
+                    }
+                    var amount1 = $('.total_weight').val();
+                    var total = parseInt(amount1) - parseInt(amount12);
+
+                    $('.recycable_weight').val(parseInt(total));
+                });
+            });
+        </script>
+    @endpush
 @endsection
