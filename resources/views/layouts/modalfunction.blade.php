@@ -1,5 +1,5 @@
 <div class="modal fade" id="fertilizer_print" role="dialog">
-    <div class="modal-dialog modal-sm" style="float:right;margin-right: 5px;width: 25%;">
+    <div class="modal-dialog modal-sm" style="float:right;margin-right: 15px;width: 25%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -11,13 +11,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date From :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control datefrom" placeholder="Date From" autofocus="" name="datefrom" value="" id="datefrom">
+                             <input type="text" class="form-control fer_datefrom" placeholder="Date From" name="fer_datefrom" value="" id="fer_datefrom">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date To :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control dateto" placeholder="Date To" name="dateto" value="">
+                             <input type="text" class="form-control fer_dateto" placeholder="Date To" name="fer_dateto" value="">
                         </div>
                     </div>
                </form>
@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="modal fade" id="garbage_print" role="dialog">
-    <div class="modal-dialog modal-sm" style="float:right;margin-right: 5px;width: 25%;">
+    <div class="modal-dialog modal-sm" style="float:right;margin-right: 15px;width: 25%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -41,13 +41,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date From :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control datefrom" placeholder="Date From" autofocus="" name="datefrom" value="" id="datefrom">
+                             <input type="text" class="form-control gar_datefrom" placeholder="Date From" name="gar_datefrom" value="" id="gar_datefrom">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date To :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control dateto" placeholder="Date To" name="dateto" value="">
+                             <input type="text" class="form-control gar_dateto" placeholder="Date To" name="gar_dateto" value="">
                         </div>
                     </div>
                </form>
@@ -59,7 +59,7 @@
     </div>
 </div>
 <div class="modal fade" id="emp_dtr_print_modal" role="dialog">
-    <div class="modal-dialog modal-sm" style="float:right;margin-right: 5px;width: 25%;">
+    <div class="modal-dialog modal-sm" style="float:right;margin-right: 15px;width: 25%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -71,13 +71,13 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date From :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control datefrom" placeholder="Date From" autofocus="" name="datefrom" value="" id="datefrom">
+                             <input type="text" class="form-control dtr_datefrom" placeholder="Date From" name="dtr_datefrom" value="" id="dtr_datefrom">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Date To :</label>
                         <div class="col-md-8">
-                             <input type="date" class="form-control dateto" placeholder="Date To" name="dateto" value="">
+                             <input type="text" class="form-control dtr_dateto" placeholder="Date To" name="dtr_dateto" value="">
                         </div>
                     </div>
                </form>
@@ -88,3 +88,10 @@
         </div>
     </div>
 </div>
+@push('append_js')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.fer_datefrom, .fer_dateto, .gar_datefrom, .gar_dateto, .dtr_datefrom, .dtr_dateto').datepicker();
+    });
+  </script>
+@endpush
