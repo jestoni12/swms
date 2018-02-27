@@ -48,33 +48,33 @@
                             <thead>
                                 <tr>
                                     <th class="circle2">Date</th>
-                                    <th class="circle2">Login1</th>
-                                    <th class="circle2">Logout1</th>
-                                    <th class="circle2">Login2</th>
-                                    <th class="circle2">Logout2</th>
-                                    <th class="circle2">Login3</th>
-                                    <th class="circle2">Logout3</th>
-                                    <th class="circle2">Login4</th>
-                                    <th class="circle2">Logout4</th>
-                                    <th class="circle2">Login5</th>
-                                    <th class="circle2">Logout5</th>
+                                    <th class="circle2">Login</th>
+                                    <th class="circle2">Logout</th>
+                                    <th class="circle2">Login</th>
+                                    <th class="circle2">Logout</th>
+                                    <th class="circle2">Login</th>
+                                    <th class="circle2">Logout</th>
+                                    <th class="circle2">Login</th>
+                                    <th class="circle2">Logout</th>
+                                    <th class="circle2">Login</th>
+                                    <th class="circle2">Logout</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($results as $result)
                                     @if($emp->id == $result->employee_id)
                                         <tr>
-                                            <td class="circle2">{{ date('m/d/y',strtotime($result->log_date)) }}</td>
-                                            <td class="circle2">{{ $result->login1 == '' ? '' : date('H:i:s',strtotime($result->login1)) }}</td>
-                                            <td class="circle2">{{ $result->logout1 == '' ? '' : date('H:i:s',strtotime($result->logout1)) }}</td>
-                                            <td class="circle2">{{ $result->login2 == '' ? '' : date('H:i:s',strtotime($result->login2)) }}</td>
-                                            <td class="circle2">{{ $result->logout2 == '' ? '' : date('H:i:s',strtotime($result->logout2)) }}</td>
-                                            <td class="circle2">{{ $result->login3 == '' ? '' : date('H:i:s',strtotime($result->login3)) }}</td>
-                                            <td class="circle2">{{ $result->logout3 == '' ? '' : date('H:i:s',strtotime($result->logout3)) }}</td>
-                                            <td class="circle2">{{ $result->login4 == '' ? '' : date('H:i:s',strtotime($result->login4)) }}</td>
-                                            <td class="circle2">{{ $result->logout4 == '' ? '' : date('H:i:s',strtotime($result->logout4)) }}</td>
-                                            <td class="circle2">{{ $result->login5 == '' ? '' : date('H:i:s',strtotime($result->login5)) }}</td>
-                                            <td class="circle2">{{ $result->logout5 == '' ? '' : date('H:i:s',strtotime($result->logout5)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ date('m/d/y',strtotime($result->log_date)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->login1 == '' ? '' : date('H:i:s A',strtotime($result->login1)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->logout1 == '' ? '' : date('H:i:s A',strtotime($result->logout1)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->login2 == '' ? '' : date('H:i:s A',strtotime($result->login2)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->logout2 == '' ? '' : date('H:i:s A',strtotime($result->logout2)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->login3 == '' ? '' : date('H:i:s A',strtotime($result->login3)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->logout3 == '' ? '' : date('H:i:s A',strtotime($result->logout3)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->login4 == '' ? '' : date('H:i:s A',strtotime($result->login4)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->logout4 == '' ? '' : date('H:i:s A',strtotime($result->logout4)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->login5 == '' ? '' : date('H:i:s A',strtotime($result->login5)) }}</td>
+                                            <td class="circle2" style="text-align: center;">{{ $result->logout5 == '' ? '' : date('H:i:s A',strtotime($result->logout5)) }}</td>
                                         </tr>
                                     @endif
                                 @endforeach

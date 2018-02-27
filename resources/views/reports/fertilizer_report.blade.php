@@ -45,7 +45,7 @@
                 <tr>
                     <td class="circle2" style="text-align: center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
                     <td class="circle2" style="text-align: center;">{{ $result->name }}</td>
-                    <td class="circle2" style="text-align: center;">{{ $result->generated_kilo }}</td>
+                    <td class="circle2" style="text-align: center;">{{ $result->generated_kilo }} kg</td>
                     <td class="circle2" style="text-align: center;">{{ $result->created_at->toFormattedDateString() }}</td>
                     <td class="circle2" style="text-align: center;">{{ $result->remarks }}</td>
                 </tr>

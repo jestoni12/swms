@@ -48,9 +48,9 @@
             <tr>rcle2">{{ $result->id }}</td>
                 <td class="circle2" style="text-align:center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
                 <td class="circle2" style="text-align:center;">{{ $result->description }}</td>
-                <td class="circle2" style="text-align:center;">{{ $result->total_weight }}</td>
-                <td class="circle2" style="text-align:center;">{{ $result->recycable_weight }}</td>
-                <td class="circle2" style="text-align:center;">{{ $result->biodegradable_weight }}</td>
+                <td class="circle2" style="text-align:center;">{{ $result->total_weight }} kg</td>
+                <td class="circle2" style="text-align:center;">{{ $result->recycable_weight }} kg</td>
+                <td class="circle2" style="text-align:center;">{{ $result->biodegradable_weight }} kg</td>
                 <td class="circle2" style="text-align:center;">{{ $result->created_at->toFormattedDateString() }}</td>
                 <td class="circle2" style="text-align:center;">{{ $result->remarks }}</td>
             </tr>
