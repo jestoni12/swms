@@ -31,9 +31,9 @@
 	<br/>
     @foreach($emps as $k => $emp)
         @if($count == ($k+1))
-            <table class="circle1" id="data-table" style="" cellpadding="0" cellspacing="0">
+            <table class="circle1" id="data-table" style="" cellpadding="4" cellspacing="0">
         @else
-            <table class="circle1" id="data-table" style="page-break-after:always;" cellpadding="0" cellspacing="0">
+            <table class="circle1" id="data-table" style="page-break-after:always;" cellpadding="4" cellspacing="0">
         @endif
             <tbody>
                 <tr>
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table style="border:1px solid black;" cellpadding="0" cellspacing="0">
+                        <table style="border:1px solid black;" cellpadding="4" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th class="circle2">Date</th>
