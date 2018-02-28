@@ -28,7 +28,7 @@
 		<h2>List Of Users</h2>
 	</div>
 	<br/>
-	<table class="circle1" id="data-table">
+	<table class="circle1" id="data-table" cellspacing="0" cellpadding="2">
         <thead>
         <tr>
             <th class="circle2">User ID</th>
