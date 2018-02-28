@@ -12,6 +12,9 @@ use Response;
 use Illuminate\Support\Facades\Input;
 class ReportController extends Controller
 {
+    public function index(){
+        return redirect()->route('home');
+    }
     public function reports_action() {
         if(Input::get('fertilizer_print_btn')){
             if(!auth()->user()->hasPermission('view_fertilizer_report')){
