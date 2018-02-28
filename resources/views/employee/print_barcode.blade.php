@@ -30,7 +30,7 @@
 		<h2>Employee Barcode</h2>
 	</div>
 	<br/>
-	<table class="circle1" id="data-table" style="">
+	<table class="circle1" id="data-table" style="" cellpadding="10" cellspacing="0">
             <thead>
             <tr>
                 <th class="circle2">ID</th>
@@ -43,7 +43,7 @@
                 <tr>
                     <td class="circle2" style="text-align: center;">{{ $results->id }}</td>
                     <td class="circle2" style="text-align: center;">{{ ucfirst($results->firstname) }} {{ ucfirst($results->middlename) }} {{ ucfirst($results->lastname) }}</td>
-                    <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($results->id, 'C39')}}" alt="barcode" /></td>
+                    <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($results->id, 'EAN13',2,50) }}" alt="barcode"   /></td>
                     <td class="circle2" style="text-align: center;">{{ $results->created_at->toFormattedDateString() }}</td>
                 </tr>
             </tbody>

@@ -31,7 +31,7 @@
 		<h2>List of Garbage</h2>
 	</div>
 	<br/>
-	<table class="circle1" cellspacing="0" cellpadding="0">
+	<table class="circle1" cellpadding="0" cellspacing="0">
         <thead>
         <tr>
             <th class="circle2" style="text-align:center;width: 16%;">USER</th>

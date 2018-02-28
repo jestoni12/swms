@@ -30,12 +30,12 @@
 		<h2>List Of User's Barcode</h2>
 	</div>
 	<br/>
-	<table class="circle1" id="data-table">
+	<table class="circle1" id="data-table" cellpadding="10" cellspacing="0">
         <tbody>
         @foreach($users as $user)
             <tr>
                 <td width="30%" class="circle2">
-                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($user->id, "EAN13",2,60) }}" alt="barcode"   />
+                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($user->id, 'EAN13',2,50) }}" alt="barcode"   />
                 </td>
                 <td width="70%" class="circle2">
                     <div>

@@ -30,7 +30,7 @@
 		<h2>Employee List</h2>
 	</div>
 	<br/>
-	<table class="circle1" id="data-table" style="">
+	<table class="circle1" id="data-table" style="" cellpadding="10" cellspacing="0">
             <thead>
             <tr>
                 <th class="circle2">ID</th>
@@ -44,7 +44,7 @@
                     <tr>
                         <td class="circle2" style="text-align: center;">{{ $result->id }}</td>
                         <td class="circle2" style="text-align: center;">{{ ucfirst($result->firstname) }} {{ ucfirst($result->middlename) }} {{ ucfirst($result->lastname) }}</td>
-                        <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($result->id, 'C39')}}" alt="barcode" /></td>
+                        <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($result->id, 'EAN13',2,50) }}" alt="barcode"   /></td>
                         <td class="circle2" style="text-align: center;">{{ $result->created_at->toFormattedDateString() }}</td>
                     </tr>
                 @endforeach

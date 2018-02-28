@@ -30,7 +30,7 @@
 		<h2>List of Fertilizer</h2>
 	</div>
 	<br/>
-	<table class="circle1" cellspacing="0" cellpadding="0">
+	<table class="circle1" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th class="circle2">USER</th>
