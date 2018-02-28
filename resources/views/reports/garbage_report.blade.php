@@ -45,7 +45,7 @@
         </thead>
         <tbody>
         @foreach($results as $result)
-            <tr>rcle2">{{ $result->id }}</td>
+            <tr>
                 <td class="circle2" style="text-align:center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
                 <td class="circle2" style="text-align:center;">{{ $result->description }}</td>
                 <td class="circle2" style="text-align:center;">{{ $result->total_weight }} kg</td>
