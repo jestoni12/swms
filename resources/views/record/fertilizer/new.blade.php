@@ -29,7 +29,7 @@
                 <div class="form-group{{ $errors->has('kilo') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="kilo">Generated Kilo:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="generated_kilo" placeholder="kilo" required name="generated_kilo" value="{{ isset($fertilizer) ? $fertilizer->kilo : old('kilo') }}">
+                        <input type="text" class="form-control" id="generated_kilo" placeholder="kilo" required name="generated_kilo" value="{{ isset($fertilizer) ? $fertilizer->kilo : old('kilo') }}" onkeypress="return isNumberKey(event, this);">
                         @if ($errors->has('kilo'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('kilo') }}</strong>
@@ -61,4 +61,15 @@
             </form>
         </div>
     </div>
+    @push('append_js')
+        <script type="text/javascript">
+            function isNumberKey(evt, element){
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if ((charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                  (charCode < 48 || charCode > 57))
+                  return false;
+                return true;
+            }
+        </script>
+    @endpush
 @endsection

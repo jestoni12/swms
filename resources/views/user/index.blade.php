@@ -16,10 +16,10 @@
 @section('content')
     <div class="result-set">
         <div class="row">
-            <div class="col-sm-1" style="display: none;">
+            <div class="col-sm-1">
                 <a href="{{route('print_user')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> List of User</a>
             </div>
-            <div class="col-sm-1" style="padding-bottom:10px;">
+            <div class="col-sm-1" style="padding-bottom:10px;display: none;">
                 <a href="{{route('print_user_barcode')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Print Barcode</a>
             </div>
         </div>

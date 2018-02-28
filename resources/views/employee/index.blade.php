@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', ' - Employee')
-@section('content_header', 'Generated Employee')
+@section('content_header', 'Employees')
 
 @section('content_header_link')
     <li class="active">List</li>

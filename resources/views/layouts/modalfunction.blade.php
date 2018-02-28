@@ -91,7 +91,12 @@
 @push('append_js')
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.fer_datefrom, .fer_dateto, .gar_datefrom, .gar_dateto, .dtr_datefrom, .dtr_dateto').datepicker();
+        $('.fer_datefrom, .fer_dateto, .gar_datefrom, .gar_dateto, .dtr_datefrom, .dtr_dateto').datepicker({
+            dateFormat: "M-dd-yy",
+            yearRange: "1950:3000",
+            changeYear: true,
+            changeMonth: true,
+        });
     });
   </script>
 @endpush

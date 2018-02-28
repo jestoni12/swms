@@ -29,7 +29,7 @@
                 <div class="form-group{{ $errors->has('total_weight') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="total_weight">Total Garbage Weight:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control total_weight" id="total_weight" placeholder="kilogram" required name="total_weight" value="{{ isset($garbage) ? $garbage->total_weight : old('total_weight') }}">
+                        <input type="text" class="form-control total_weight" id="total_weight" placeholder="kilogram" required name="total_weight" value="{{ isset($garbage) ? $garbage->total_weight : old('total_weight') }}" onkeypress="return isNumberKey(event, this);">
                         @if ($errors->has('total_weight'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('total_weight') }}</strong>
@@ -40,7 +40,7 @@
                 <div class="form-group{{ $errors->has('recycable_weight') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="recycable_weight">Recycable Garbage Weight:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control recycable_weight" id="recycable_weight" placeholder="kilogram" required name="recycable_weight" value="{{ isset($garbage) ? $garbage->recycable_weight : old('recycable_weight') }}">
+                        <input type="text" class="form-control recycable_weight" id="recycable_weight" placeholder="kilogram" required name="recycable_weight" value="{{ isset($garbage) ? $garbage->recycable_weight : old('recycable_weight') }}" onkeypress="return isNumberKey(event, this);">
                         @if ($errors->has('recycable_weight'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('recycable_weight') }}</strong>
@@ -51,7 +51,7 @@
                 <div class="form-group{{ $errors->has('biodegradable_weight') ? ' has-error' : '' }}">
                     <label class="control-label col-sm-3" for="biodegradable_weight">Biodegradable Garbage Weight:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control biodegradable_weight" id="biodegradable_weight" placeholder="kilogram" required name="biodegradable_weight" value="{{ isset($garbage) ? $garbage->biodegradable_weight : old('biodegradable_weight') }}">
+                        <input type="text" class="form-control biodegradable_weight" id="biodegradable_weight" placeholder="kilogram" required name="biodegradable_weight" value="{{ isset($garbage) ? $garbage->biodegradable_weight : old('biodegradable_weight') }}" onkeypress="return isNumberKey(event, this);">
                         @if ($errors->has('biodegradable_weight'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('biodegradable_weight') }}</strong>
@@ -108,6 +108,14 @@
                     $('.recycable_weight').val(parseInt(total));
                 });
             });
+
+            function isNumberKey(evt, element){
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if ((charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                  (charCode < 48 || charCode > 57))
+                  return false;
+                return true;
+            }
         </script>
     @endpush
 @endsection
