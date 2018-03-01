@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $result = User::latest()->orderBy('id','desc')->paginate($this->page_num);
+        $result = User::latest()->orderBy('status','asc')->orderBy('id','desc')->paginate($this->page_num);
         return view('user.index', compact('result'));
     }
 
