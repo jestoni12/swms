@@ -44,7 +44,7 @@
                     <tr>
                         <td class="circle2" style="text-align: center;">{{ $result->id }}</td>
                         <td class="circle2" style="text-align: center;">{{ ucfirst($result->firstname) }} {{ ucfirst($result->middlename) }} {{ ucfirst($result->lastname) }}</td>
-                        <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($result->id, 'C39',2,50)}}" alt="barcode"   /></td>
+                        <td class="circle2" style="text-align: center;"><img src="data:image/png;base64,{{DNS1D::getBarcodePNG($result->id, 'C39',5,50)}}" alt="barcode"   /></td>
                         <td class="circle2" style="text-align: center;">{{ $result->created_at->toFormattedDateString() }}</td>
                     </tr>
                 @endforeach
