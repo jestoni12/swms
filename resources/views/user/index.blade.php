@@ -48,6 +48,15 @@
                             'entity' => 'users',
                             'id' => $item->id
                         ])
+                        <form action="" style="display: inline;"  method="POST">
+                            {{csrf_field()}}
+                            {{ method_field('PATCH') }}
+                            @if($item->status == 'Active')
+                                <button style="width: 60px;" type="submit" class="btn-success btn btn-xs btn-success">Active</button>
+                            @else
+                                <button type="submit" class="btn-danger btn btn-xs btn-danger">Inactive</button>
+                            @endif
+                        </form>
                     </td>
                     @endcan
                 </tr>

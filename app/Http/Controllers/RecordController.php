@@ -64,13 +64,12 @@ class RecordController extends Controller
     public function action_edit_fertilizer(Request $request, $id){
         if($request->input("edit_fertilizer")){
             $this->validate($request, [
-            'name' => 'required|min:5',
-            'generated_kilo' => 'required'
+            'amount_fertilizers' => 'required'
         ]);
         $fertilizer = Fertilizer::find($id);
 
         // Update fertilizer
-        $fertilizer->fill($request->all());
+        $fertilizer->fill($request->only('amount_fertilizers'));
         $check = $fertilizer->getDirty();
         if(count($check) > 0){
             $fertilizer->save();
@@ -128,10 +127,8 @@ class RecordController extends Controller
      public function action_edit_garbage(Request $request, $id){
         if($request->input("edit_garbage")){
             $this->validate($request, [
-                'description' => 'required|min:5',
-                'total_weight' => 'required',
-                'recycable_weight' => 'required',
-                'biodegradable_weight' => 'required'
+                'type' => 'required|min:5',
+                'amount_in_kilo' => 'required'
             ]);
 
         $garbage = Garbage::find($id);
