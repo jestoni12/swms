@@ -62,7 +62,7 @@
                 <h4 class="modal-title"><b>Garbage Search</b></h4>
             </div>
             <div class="modal-body form-horizontal">
-                <form class="form-horizontal" autocomplete="off"  name="garbage_print_form" id="garbage_print_form" role="form"  method="POST" action="{{action('ReportController@reports_action')}}" target="_blank">
+                <form class="form-horizontal" autocomplete="off"  name="garbage_search_form" id="garbage_search_form" role="form"  method="POST" action="">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label class="col-md-4 control-label">User :</label>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Type of Garbage :</label>
                         <div class="col-md-8">
-                            <select class="form-control" name="type" placeholder="Type of Garbage" id="type" required>
+                            <select class="form-control type" name="type" placeholder="Type of Garbage" id="type" required>
                                 <option value="" selected="">--Select One--</option>
                                 <option value="Biodegradable">Biodegradable</option>
                                 <option value="Non-Biodegradable">Non-Biodegradable</option>
@@ -95,7 +95,7 @@
                </form>
             </div>
             <div class="modal-footer">
-                <button id="garbage_print_form" class="btn btn-sm garbage_print_form" type="submit" form="garbage_print_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="garbage_print_form" name="garbage_print_btn"><span class="menu-icon glyphicon glyphicon-search"></span>&nbsp;Search</button>
+                <button id="garbage_print_form" class="btn btn-sm search-btn" type="submit" form="garbage_search_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="garbage_print_btn"><span class="menu-icon glyphicon glyphicon-search"></span>&nbsp;Search</button>
             </div>
         </div>
     </div>
@@ -108,6 +108,19 @@
             yearRange: "1950:3000",
             changeYear: true,
             changeMonth: true,
+        });
+
+        function submitfunc(){
+            var gar_user = $('.gar_user').val().trim();
+            var datefrom = $('.gar_datefrom').val();
+            var dateto = $('.gar_dateto').val();
+            var type = $('.type').val();
+
+            window.history.pushState("", "", '{{ url("reports/garbage/search") }}?gar_user='+gar_user+'&datefrom='+datefrom+'&dateto='+dateto+'&type='+type);
+            window.location.reload(); 
+        }
+        $(".search-btn").click(function() {
+            submitfunc();
         });
     });
   </script>

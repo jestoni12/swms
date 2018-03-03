@@ -58,7 +58,7 @@
                 <h4 class="modal-title"><b>Fertilizer Search</b></h4>
             </div>
             <div class="modal-body form-horizontal">
-                <form class="form-horizontal" autocomplete="off"  name="fertilizer_print_form" id="fertilizer_print_form" role="form"  method="POST" action="{{action('ReportController@reports_action')}}" target="_blank">
+                <form class="form-horizontal" autocomplete="off"  name="fertilizer_print_form" id="fertilizer_search_form" role="form"  method="POST" action="">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label class="col-md-4 control-label">User :</label>
@@ -81,7 +81,7 @@
                </form>
             </div>
             <div class="modal-footer">
-                <button id="fertilizer_print_btn" class="btn btn-sm fertilizer_print_btn" type="submit" form="fertilizer_print_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="fertilizer_print_btn" name="fertilizer_print_btn">&nbsp;<span class="menu-icon glyphicon glyphicon-search"></span> Search</button>
+                <button id="search-btn" class="btn btn-sm search-btn" type="submit" form="fertilizer_search_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="search-btn">&nbsp;<span class="menu-icon glyphicon glyphicon-search"></span> Search</button>
             </div>
         </div>
     </div>
@@ -94,6 +94,18 @@
             yearRange: "1950:3000",
             changeYear: true,
             changeMonth: true,
+        });
+
+        function submitfunc(){
+            var fer_user = $('.fer_user').val().trim();
+            var datefrom = $('.fer_datefrom').val();
+            var dateto = $('.fer_dateto').val();
+
+            window.history.pushState("", "", '{{ url("reports/fertilizer/search") }}?fer_user='+fer_user+'&datefrom='+datefrom+'&dateto='+dateto);
+            window.location.reload(); 
+        }
+        $(".search-btn").click(function() {
+            submitfunc();
         });
     });
   </script>
