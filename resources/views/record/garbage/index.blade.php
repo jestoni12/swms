@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Type of Garbage :</label>
                         <div class="col-md-8">
-                            <select class="form-control type" name="type" placeholder="Type of Garbage" id="type" required>
+                            <select class="form-control type" name="type" placeholder="Type of Garbage" id="type">
                                 <option value="" selected="">--Select One--</option>
                                 <option value="Biodegradable">Biodegradable</option>
                                 <option value="Non-Biodegradable">Non-Biodegradable</option>
