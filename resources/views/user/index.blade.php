@@ -26,27 +26,22 @@
         <table class="table table-striped table-hover" id="data-table">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Role</th>
-                <th>Status</th>
-                <th>Created At</th>
+                <th>NAME</th>
+                <th>USERNAME</th>
+                <th>ROLE</th>
+                <th>STATUS</th>
                 @can('edit_users', 'delete_users')
-                <th class="text-center">Actions</th>
+                <th class="text-center">ACTIONS</th>
                 @endcan
             </tr>
             </thead>
             <tbody>
             @foreach($result as $item)
                 <tr>
-                    <td>{{ $item->id }}</td>
                     <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
                     <td>{{ ucfirst($item->username) }}</td>
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     <td>{{ $item->status }}</td>
-                    <td>{{ $item->created_at->toFormattedDateString() }}</td>
-
                     @can('edit_users')
                     <td class="text-center">
                         @include('shared._actions', [

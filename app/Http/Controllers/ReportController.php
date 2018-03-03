@@ -15,36 +15,39 @@ class ReportController extends Controller
     public function index(){
         return redirect()->route('home');
     }
-    public function reports_action() {
-        if(Input::get('fertilizer_print_btn')){
-            if(!auth()->user()->hasPermission('view_fertilizer_report')){
-                abort(403);
-            }
 
-            $results = Fertilizer::orderBy('created_at','desc');
-            if(Input::get('datefrom')){
-                $results->where('created_at','>=', Input::get('datefrom'));
-            }
-            if(Input::get('dateto')){
-                $results->where('created_at','<=', Input::get('dateto'));
-            }
-            $results = $results->get();
-            // $pdf = PDF::setPaper('letter');
-            // $pdf->loadView('reports.fertilizer_report',compact('results'));
-            // return $pdf->stream();
-
-            $pdf = PDF::loadView('reports.fertilizer_report',compact('results'), [], [
-                'format' => 'letter'
-            ]);
-            return $pdf->stream('fertilzer.pdf');
+    public function fertilizer_print(){
+        if(!auth()->user()->hasPermission('view_fertilizer_report')){
+            abort(403);
         }
 
-        else if(Input::get('garbage_print_btn')){
-            if(!auth()->user()->hasPermission('view_garbage_report')){
+        $results = Fertilizer::orderBy('created_at','desc');
+        $sum = $results->sum('amount_fertilizers');
+        if(Input::get('datefrom')){
+            $results->where('created_at','>=', Input::get('datefrom'));
+        }
+        if(Input::get('dateto')){
+            $results->where('created_at','<=', Input::get('dateto'));
+        }
+        $results = $results->get();
+        // $pdf = PDF::setPaper('letter');
+        // $pdf->loadView('reports.fertilizer_report',compact('results'));
+        // return $pdf->stream();
+
+        $pdf = PDF::loadView('reports.fertilizer_report',compact('results','sum'), [], [
+            'format' => 'letter'
+        ]);
+        return $pdf->stream('fertilzer.pdf');
+    }
+
+    public function garbage_print(){
+        if(!auth()->user()->hasPermission('view_garbage_report')){
                 abort(403);
             }
 
             $results = Garbage::orderBy('created_at','desc');
+
+            $sum = $results->sum('amount_in_kilo');
             if(Input::get('datefrom')){
                 $results->where('created_at','>=', Input::get('datefrom'));
             }
@@ -56,36 +59,9 @@ class ReportController extends Controller
             // $pdf->loadView('reports.garbage_report',compact('results'));
             // return $pdf->stream();
 
-            $pdf = PDF::loadView('reports.garbage_report',compact('results'), [], [
+            $pdf = PDF::loadView('reports.garbage_report',compact('results','sum'), [], [
                 'format' => 'letter'
             ]);
             return $pdf->stream('garbage.pdf');
-        }
-
-        else if(Input::get('emp_dtr_btn')){
-            if(!auth()->user()->hasPermission('view_emp_dtr_report')){
-                abort(403);
-            }
-
-            $emps = Employee::orderBy('id','asc')->get();
-            $count = count($emps);
-            $results = EmployeesLog::join('employees','employees_logs.employee_id','=','employees.id')
-                            ->orderBy('log_date','desc');
-            if(Input::get('datefrom')){
-                $results->where('employees_logs.created_at','>=', Input::get('datefrom'));
-            }
-            if(Input::get('dateto')){
-                $results->where('employees_logs.created_at','<=', Input::get('dateto'));
-            }
-            $results = $results->get();
-            // $pdf = PDF::setPaper('letter');
-            // $pdf->loadView('reports.employee_dtr_report',compact('results','emps','count'));
-            // return $pdf->stream();
-
-            $pdf = PDF::loadView('reports.employee_dtr_report',compact('results','emps','count'), [], [
-                'format' => 'letter'
-            ]);
-            return $pdf->stream('emp_dtr.pdf');
-        }
     }
 }

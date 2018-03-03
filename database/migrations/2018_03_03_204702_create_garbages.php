@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFertilizersTable extends Migration
+class CreateGarbages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateFertilizersTable extends Migration
      */
     public function up()
     {
-        Schema::create('fertilizers', function (Blueprint $table) {
+        Schema::create('garbages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('name');
-            $table->string('remarks');
-            $table->integer('generated_kilo');
+            $table->enum('type',array('Biodegradable','Non-Biodegradable'))->default('Biodegradable');
+            $table->integer('amount_in_kilo');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateFertilizersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fertilizers');
+        Schema::dropIfExists('garbages');
     }
 }

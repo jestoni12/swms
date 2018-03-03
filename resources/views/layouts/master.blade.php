@@ -240,7 +240,7 @@
                     </div>
                     <ul class="menu accordion-menu">
                         @can('view_users','view_roles','view_user_logs')
-                            <li class="droplink {{ Request::is('users*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>User Management</p><span class="arrow"></span></a>
+                            <li class="droplink {{ Request::is('users*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     @can('view_users')
                                         <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
@@ -249,13 +249,13 @@
                                         <li class="{{ Request::is('roles*') ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li>
                                     @endcan
                                     @can('view_user_logs')
-                                        <li class="{{ Request::is('record/userlog*') ? 'active' : '' }}"><a href="{{ route('userlogs') }}">User Logs</a></li>
+                                        <li class="{{ Request::is('record/userlog*') ? 'active' : '' }}" style="display: none;"><a href="{{ route('userlogs') }}">User Logs</a></li>
                                     @endcan
                                 </ul>
                             </li>
                         @endcan
                         @can('view_jobs','view_employees')
-                            <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
+                            <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}" style="display: none;"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     @can('view_employees')
                                         <li class="{{ Request::is('employees*') ? 'active' : '' }}"><a href="{{ route('employees') }}">Employees</a></li>
@@ -267,14 +267,10 @@
                             </li>
                         @endcan
                         @can('view_fertilizers','view_garbages')
-                            <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-book"></span><p>Records</p><span class="arrow"></span></a>
+                            <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-bar"></span><p>Record</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
-                                    @can('view_fertilizers')
-                                        <li class="{{ Request::is('record/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer</a></li>
-                                    @endcan
-                                    @can('view_garbages')
-                                        <li class="{{ Request::is('record/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Garbage</a></li>
-                                    @endcan
+                                    <li class="{{ Request::is('garbage*') ? 'active' : '' }}"><a href="{{ route('create_garbage') }}">Garbage</a></li>
+                                    <li class="{{ Request::is('fertilizer*') ? 'active' : '' }}"><a href="{{ route('create_fertilizer') }}">Fertilizer</a></li>
                                 </ul>
                             </li>
                         @endcan
@@ -282,13 +278,10 @@
                             <li  style="margin-bottom:100px;" class="droplink {{ Request::is('reports*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-file"></span><p>Reports</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
                                     @can('view_fertilizer_report')
-                                        <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="#" data-toggle="modal" data-target="#fertilizer_print">Fertilizer Report</a></li>
+                                        <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer Report</a></li>
                                     @endcan
                                     @can('view_garbage_report')
-                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="#" data-toggle="modal" data-target="#garbage_print">Garbage Report</a></li>
-                                    @endcan
-                                    @can('view_emp_dtr_report')
-                                        <li class="{{ Request::is('reports/employee_dtr*') ? 'active' : '' }}"><a href="" data-toggle="modal" data-target="#emp_dtr_print_modal">Employee Dtr Report</a></li>
+                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Garbage Report</a></li>
                                     @endcan
                                 </ul>
                             </li>
@@ -298,7 +291,7 @@
             </div><!-- Page Sidebar -->
             <div class="page-inner">
                 <div class="page-title">
-                    <h3>@yield('content_header')</h3>
+                    @yield('content_header')
                     <div class="page-breadcrumb">
                         <ol class="breadcrumb">
                             @yield('content_header_link')
@@ -371,7 +364,6 @@
             </ul>
         </nav>
         <div class="cd-overlay"></div>
-        @include('layouts.modalfunction')
         @include('layouts.script')
     </body>
 </html>
