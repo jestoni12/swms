@@ -29,7 +29,6 @@
                 <th>NAME</th>
                 <th>USERNAME</th>
                 <th>ROLE</th>
-                <th>STATUS</th>
                 @can('edit_users', 'delete_users')
                 <th class="text-center">ACTIONS</th>
                 @endcan
@@ -41,20 +40,19 @@
                     <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
                     <td>{{ ucfirst($item->username) }}</td>
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
-                    <td>{{ $item->status }}</td>
                     @can('edit_users')
                     <td class="text-center">
                         @include('shared._actions', [
                             'entity' => 'users',
                             'id' => $item->id
                         ])
-                        <form action="" style="display: inline;"  method="POST">
+                        <form action="{{ route('users.update',$item->id)}}" style="display: inline;"  method="POST">
                             {{csrf_field()}}
                             {{ method_field('PATCH') }}
                             @if($item->status == 'Active')
-                                <button style="width: 60px;" type="submit" class="btn-success btn btn-xs btn-success">Active</button>
+                                <button style="width: 60px;" type="submit" name="active" value="Active" class="btn-success btn btn-xs btn-success">Active</button>
                             @else
-                                <button type="submit" class="btn-danger btn btn-xs btn-danger">Inactive</button>
+                                <button type="submit" name="inactive" value="Inactive" class="btn-danger btn btn-xs btn-danger">Inactive</button>
                             @endif
                         </form>
                     </td>
