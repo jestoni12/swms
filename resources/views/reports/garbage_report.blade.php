@@ -33,7 +33,7 @@
         Poblacion Tabango, Leyte
     </div><br>
     <div style="text-align: center;">
-        <h4>Report of Fertilizer Record</h4>
+        <h4>Report of Waste</h4>
     </div>
     <div>
         <table>
