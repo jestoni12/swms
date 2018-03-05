@@ -6,9 +6,7 @@
 
 @section('content_header_link')
     <li ><a href="{{ route('users.index') }}" style="color:#08A7C3">List</a></li>
-    @can('add_users')
-        <li><a href="{{ route('users.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
-    @endcan
+    <li><a href="{{ route('users.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
 @endsection
 
 @section('content')

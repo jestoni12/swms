@@ -24,9 +24,7 @@
                 <th style="text-align: center;">TYPE OF WASTE</th>
                 <th style="text-align: center;">AMOUNT</th>
                 <th style="text-align: center;">DATE RECORDED</th>
-                @can('edit_garbages', 'delete_garbages')
                 <th style="text-align: center;">Actions</th>
-                @endcan
             </tr>
             </thead>
             <tbody>
@@ -37,18 +35,14 @@
                         <td style="text-align: center;">{{ $garbages->amount_in_kilo }}</td>
                         <td style="text-align: center;">{{ $garbages->created_at->toFormattedDateString() }}</td>
                         <td style="text-align: center;">
-                            @can('edit_garbages')
-                                <a href="{{route('edit_garbage', $garbages->id)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i> Edit</a>
-                            @endcan
-                            @can('delete_garbages')
-                                <form action="{{route('delete_garbage',$garbages->id)}}" style="display: inline" onclick="return confirm('Do you really want to delete it?')" method="POST">
-                                    {{csrf_field()}}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn-delete btn btn-xs btn-danger" name="delete_garbage" value="delete_garbage">
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                    </button>
-                                </form>
-                            @endcan
+                            <a href="{{route('edit_garbage', $garbages->id)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i> Edit</a>
+                            <form action="{{route('delete_garbage',$garbages->id)}}" style="display: inline" onclick="return confirm('Do you really want to delete it?')" method="POST">
+                                {{csrf_field()}}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn-delete btn btn-xs btn-danger" name="delete_garbage" value="delete_garbage">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

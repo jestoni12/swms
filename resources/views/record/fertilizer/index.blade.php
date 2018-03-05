@@ -32,18 +32,14 @@
                         <td style="text-align: center;">{{ $results->amount_fertilizers }}</td>
                         <td style="text-align: center;">{{ $results->created_at->toFormattedDateString() }}</td>
                         <td style="text-align: center;">
-                            @can('edit_garbages')
-                                <a href="{{route('edit_fertilizer', $results->id)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i> Edit</a>
-                            @endcan
-                            @can('delete_garbages')
-                                <form action="{{route('delete_fertilizer',$results->id)}}" style="display: inline" onclick="return confirm('Do you really want to delete it?')" method="POST">
-                                    {{csrf_field()}}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn-delete btn btn-xs btn-danger" name="delete_fertilzer" value="delete_fertilzer">
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                    </button>
-                                </form>
-                            @endcan
+                            <a href="{{route('edit_fertilizer', $results->id)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i> Edit</a>
+                            <form action="{{route('delete_fertilizer',$results->id)}}" style="display: inline" onclick="return confirm('Do you really want to delete it?')" method="POST">
+                                {{csrf_field()}}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn-delete btn btn-xs btn-danger" name="delete_fertilzer" value="delete_fertilzer">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </td>
                     </tr>

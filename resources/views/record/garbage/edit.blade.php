@@ -17,11 +17,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3"></label>
                     <div class="col-sm-9">
-                        @can('edit_garbages')
-                            <button type="submit" class="btn btn-sm btn-info" name="edit_garbage" value="edit_garbage">
-                                Update
-                            </button>
-                        @endcan
+                        <button type="submit" class="btn btn-sm btn-info" name="edit_garbage" value="edit_garbage">
+                            Update
+                        </button>
                     </div>
                 </div>
             </form>

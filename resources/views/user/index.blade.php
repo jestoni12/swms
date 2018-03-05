@@ -9,9 +9,7 @@
 
 @section('content_header_link')
     <li class="active">List</a></li>
-    @can('add_users')
-        <li><a href="{{ route('users.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
-    @endcan
+    <li><a href="{{ route('users.create') }}" style="color:#08A7C3"><i class="glyphicon glyphicon-plus"></i> Create User</a></li>
 @endsection
 
 @section('content')
@@ -43,7 +41,6 @@
                 <tr>
                     <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
                     <td>{{ ucfirst($item->username) }}</td>
-                    @can('edit_users')
                     <td class="text-center">
                         @include('shared._actions', [
                             'entity' => 'users',
@@ -63,7 +60,6 @@
                             @endif
                         </form>
                     </td>
-                    @endcan
                 </tr>
             @endforeach
             </tbody>

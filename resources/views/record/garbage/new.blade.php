@@ -41,11 +41,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3"></label>
                     <div class="col-sm-9">
-                        @can('add_garbages')
-                            <button type="submit" class="btn btn-sm btn-info">
-                                Save
-                            </button>
-                        @endcan
+                        <button type="submit" class="btn btn-sm btn-info">
+                            Save
+                        </button>
                     </div>
                 </div>
             </form>
