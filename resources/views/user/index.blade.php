@@ -46,14 +46,13 @@
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     <td>{{ $item->status }}</td>
                     <td>{{ $item->created_at->toFormattedDateString() }}</td>
-
                     @can('edit_users')
-                    <td class="text-center">
-                        @include('shared._actions', [
-                            'entity' => 'users',
-                            'id' => $item->id
-                        ])
-                    </td>
+                        <td class="text-center">
+                            @include('shared._actions', [
+                                'entity' => 'users',
+                                'id' => $item->id
+                            ])
+                        </td>
                     @endcan
                 </tr>
             @endforeach
