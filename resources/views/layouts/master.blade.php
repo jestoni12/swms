@@ -84,7 +84,7 @@
                         </a>
                     </div>
                     <div class="logo-box">
-                        <a href="" class="logo-text"><span>ESWMS</span></a>
+                        <a href="" class="logo-text"><span></span></a>
                     </div><!-- Logo Box -->
                     <div class="search-button">
                         <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -240,18 +240,7 @@
                     </div>
                     <ul class="menu accordion-menu">
                         @can('view_users','view_roles','view_user_logs')
-                            <li class="droplink {{ Request::is('users*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Users</p><span class="arrow"></span></a>
-                                <ul class="sub-menu">
-                                    @can('view_users')
-                                        <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
-                                    @endcan
-                                    @can('view_roles')
-                                        <li class="{{ Request::is('roles*') ? 'active' : '' }}" style="display: none;"><a href="{{ route('roles.index') }}">Roles</a></li>
-                                    @endcan
-                                    @can('view_user_logs')
-                                        <li class="{{ Request::is('record/userlog*') ? 'active' : '' }}" style="display: none;"><a href="{{ route('userlogs') }}">User Logs</a></li>
-                                    @endcan
-                                </ul>
+                           <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
                             </li>
                         @endcan
                         @can('view_jobs','view_employees')
