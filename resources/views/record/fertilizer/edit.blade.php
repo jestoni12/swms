@@ -2,10 +2,11 @@
 
 @section('title', ' - Fertilizer')
 
-@section('content_header', 'Edit Fertilizer')
+@section('content_header')
+    <h3>Edit Fertilizers</h3>
+@endsection
 
 @section('content_header_link')
-    <li ><a href="{{ route('fertilizer') }}" style="color:#08A7C3">List</a></li>
 @endsection
 
 @section('content')

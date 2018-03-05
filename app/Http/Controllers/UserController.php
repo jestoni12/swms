@@ -106,23 +106,32 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        $this->validate($request, [
-            'firstname' => 'required|min:1',
-            'lastname' => 'required|min:1',
-            'username' => 'required|unique:users,username,' . $id,
-            'roles' => 'required|min:1',
-            'status' => 'required'
-        ]);
-
         // Get the user
         $user = User::findOrFail($id);
 
-        // Update user
-        $user->fill($request->except('roles', 'permissions', 'password'));
-        $user->status = $request->input('status');
-        // check for password change
-        if($request->get('password')) {
-            $user->password = bcrypt($request->get('password'));
+        if($request->input('active')){
+            $user->status = 'Inactive';
+
+        }
+        elseif($request->input('inactive')){
+            $user->status = 'Active';
+        }
+        else{
+            $this->validate($request, [
+                'firstname' => 'required|min:1',
+                'lastname' => 'required|min:1',
+                'username' => 'required|unique:users,username,' . $id,
+                'roles' => 'required|min:1',
+                'status' => 'required'
+            ]);
+
+            // Update user
+            $user->fill($request->except('roles', 'permissions', 'password'));
+            $user->status = $request->input('status');
+            // check for password change
+            if($request->get('password')) {
+                $user->password = bcrypt($request->get('password'));
+            }
         }
 
         // Handle the user roles

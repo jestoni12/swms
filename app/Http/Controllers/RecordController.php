@@ -15,13 +15,8 @@ class RecordController extends Controller
         $this->page_num = 15;
     }
 
-    public function user_index(){
-    	$result = User::orderBy('firstname','asc')
-    			->with(['userlogs' => function($q){
-    				$q->orderBy('created_at','desc');
-    			}])
-    			->paginate($this->page_num);
-    	return view('record.userlog.index',compact('result'));
+    public function record(){
+    	return view('record.index');
     }
 
     public function printlogs(){
@@ -48,20 +43,17 @@ class RecordController extends Controller
     }
 
     public function store_fertilizer(Request $request) {
-        if($request->input('save_fertilizer')){
-            $this->validate($request, [
-                'name' => 'required|min:1',
-                'generated_kilo' => 'required'
-            ]);
+        $this->validate($request, [
+            'amount_fertilizers' => 'required'
+        ]);
 
-            if( $request->user()->fertilizers()->create($request->all()) ) {
-                flash('Fertilizer has been added');
-            }
-            else{
-                 flash()->error('Unable to create fertilizer.');
-            }
-            return redirect()->route('fertilizer');
+        if( $request->user()->fertilizers()->create($request->all()) ) {
+            flash('Fertilizer has been added');
         }
+        else{
+             flash()->error('Unable to create fertilizer.');
+        }
+        return redirect()->route('create_fertilizer');
     }
 
     public function edit_fertilizer($id) {
@@ -72,13 +64,12 @@ class RecordController extends Controller
     public function action_edit_fertilizer(Request $request, $id){
         if($request->input("edit_fertilizer")){
             $this->validate($request, [
-            'name' => 'required|min:5',
-            'generated_kilo' => 'required'
+            'amount_fertilizers' => 'required'
         ]);
         $fertilizer = Fertilizer::find($id);
 
         // Update fertilizer
-        $fertilizer->fill($request->all());
+        $fertilizer->fill($request->only('amount_fertilizers'));
         $check = $fertilizer->getDirty();
         if(count($check) > 0){
             $fertilizer->save();
@@ -115,10 +106,8 @@ class RecordController extends Controller
 
     public function store_garbage(Request $request){
         $this->validate($request, [
-            'description' => 'required|min:5',
-            'total_weight' => 'required',
-            'recycable_weight' => 'required',
-            'biodegradable_weight' => 'required'
+            'type' => 'required|min:5',
+            'amount_in_kilo' => 'required'
         ]);
 
         if( $request->user()->garbages()->create($request->all()) ) {
@@ -127,7 +116,7 @@ class RecordController extends Controller
         else{
              flash()->error('Unable to create garbage.');
         }
-        return redirect()->route('garbage');
+        return redirect()->route('create_garbage');
     }
 
     public function edit_garbage($id) {
@@ -138,10 +127,8 @@ class RecordController extends Controller
      public function action_edit_garbage(Request $request, $id){
         if($request->input("edit_garbage")){
             $this->validate($request, [
-                'description' => 'required|min:5',
-                'total_weight' => 'required',
-                'recycable_weight' => 'required',
-                'biodegradable_weight' => 'required'
+                'type' => 'required|min:5',
+                'amount_in_kilo' => 'required'
             ]);
 
         $garbage = Garbage::find($id);

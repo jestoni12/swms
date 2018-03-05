@@ -595,7 +595,7 @@
         </div>
 
         <div class="button-holder">
-             <input type="password" class="loginput" placeholder="Barcode ID" autocomplete="off" autofocus=""><br/>
+             <input type="password" class="loginput" placeholder="Barcode ID" autocomplete="off" autofocus="" style="display: none;"><br/>
             <a class="button">Switch Theme</a>
         </div>
        

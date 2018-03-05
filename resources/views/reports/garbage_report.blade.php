@@ -30,29 +30,25 @@
 	<div>
 		<h2>List of Garbage</h2>
 	</div>
-	<br/>
+    <div>
+        Total Kilo : {{ $sum }} kg
+    </div><br>
 	<table class="circle1" cellpadding="4" cellspacing="0">
         <thead>
         <tr>
-            <th class="circle2" style="text-align:center;width: 16%;">USER</th>
-            <th class="circle2" style="text-align:center;width: 24%;">GARBAGE NAME</th>
-            <th class="circle2" style="text-align:center;width: 11%;">TOTAL KILOGRAM</th>
-            <th class="circle2" style="text-align:center;width: 12%;">RECYCABLE</th>
-            <th class="circle2" style="text-align:center;width: 16%;">BIODEGRADABLE</th>
-            <th class="circle2" style="text-align:center;width: 10%;">DATE CREATED</th>
-            <th class="circle2" style="text-align:center;width: 10%;">REMARKS</th>
+            <th class="circle2" style="text-align:center;width: 30%;">USER</th>
+            <th class="circle2" style="text-align:center;width: 30%;">TYPE OF GARBAGE</th>
+            <th class="circle2" style="text-align:center;width: 20%;">AMOUNT</th>
+            <th class="circle2" style="text-align:center;width: 20%;">DATE RECORDED</th>
         </tr>
         </thead>
         <tbody>
         @foreach($results as $result)
             <tr>
                 <td class="circle2" style="text-align:center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
-                <td class="circle2" style="text-align:center;">{{ $result->description }}</td>
-                <td class="circle2" style="text-align:center;">{{ $result->total_weight }} kg</td>
-                <td class="circle2" style="text-align:center;">{{ $result->recycable_weight }} kg</td>
-                <td class="circle2" style="text-align:center;">{{ $result->biodegradable_weight }} kg</td>
+                <td class="circle2" style="text-align:center;">{{ $result->type }}</td>
+                <td class="circle2" style="text-align:center;">{{ $result->amount_in_kilo }} kg</td>
                 <td class="circle2" style="text-align:center;">{{ $result->created_at->toFormattedDateString() }}</td>
-                <td class="circle2" style="text-align:center;">{{ $result->remarks }}</td>
             </tr>
         @endforeach
         </tbody>

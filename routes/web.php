@@ -35,6 +35,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('/record/userlogs/show_logs', 'RecordController@show_logs')->name('show_logs');
     Route::get('/users/print/user/list', 'UserController@print')->name('print_user');
     Route::get('/users/print/user/list_barcode', 'UserController@print2')->name('print_user_barcode');
+
+    Route::get('/record/index', 'RecordController@record')->name('record');
     
     Route::get('/record/fertilizer/index', 'RecordController@fertilizer')->name('fertilizer');
     Route::delete('/record/fertilizer/delete={id}', 'RecordController@delete_fertilizer')->name('delete_fertilizer');
@@ -68,7 +70,9 @@ Route::group( ['middleware' => ['auth']], function() {
 
     Route::get('/reports','ReportController@index')->name('reports');
     Route::post('/reports','ReportController@reports_action')->name('reports_action');
-    // Route::post('/reports/fertilizer','ReportController@fertilizer_report')->name('fertilizer_report');
-    // Route::post('/reports/garbage','ReportController@garbage_report')->name('garbage_report');
-    // Route::post('/reports/employee_dtr','ReportController@employee_dtr')->name('employee_dtr');
+    Route::get('/reports/fertilizer/print', 'ReportController@fertilizer_print')->name('fertilizer_print');
+    Route::get('/reports/garbage/print', 'ReportController@garbage_print')->name('garbage_print');
+
+    Route::post('/reports/fertilizer/search', 'ReportController@fertilizer_search')->name('fertilizer_search');
+    Route::post('/reports/garbage/search', 'ReportController@garbage_search')->name('garbage_search');
 });

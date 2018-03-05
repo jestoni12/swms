@@ -29,25 +29,23 @@
 	<div>
 		<h2>List of Fertilizer</h2>
 	</div>
-	<br/>
+    <div>
+        Total Amount : {{ $sum }}
+    </div><br>
 	<table class="circle1" cellpadding="4" cellspacing="0">
         <thead>
             <tr>
                 <th class="circle2">USER</th>
-                <th class="circle2">FERTILZERS NAME</th>
-                <th class="circle2">GENERATED KILO</th>
-                <th class="circle2">DATE CREATED</th>
-                <th class="circle2">REMARKS</th>
+                <th class="circle2">FERTILIZER AMOUNT</th>
+                <th class="circle2">DATE RECORDED</th>
             </tr>
         </thead>
         <tbody>
             @foreach($results as $result)
                 <tr>
                     <td class="circle2" style="text-align: center;">{{ ucfirst($result->users->firstname) }} {{ ucfirst($result->users->middlename) }} {{ ucfirst($result->users->lastname) }}</td>
-                    <td class="circle2" style="text-align: center;">{{ $result->name }}</td>
-                    <td class="circle2" style="text-align: center;">{{ $result->generated_kilo }} kg</td>
+                    <td class="circle2" style="text-align: center;">{{ $result->amount_fertilizers }}</td>
                     <td class="circle2" style="text-align: center;">{{ $result->created_at->toFormattedDateString() }}</td>
-                    <td class="circle2" style="text-align: center;">{{ $result->remarks }}</td>
                 </tr>
             @endforeach
         </tbody>
