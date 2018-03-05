@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', ' - Report Garbage')
+@section('title', ' - Report Waste')
 @section('content_header')
-    <h3>Reports of Garbages</h3>
-    <h3 style="margin-top: -25px;margin-left: 90%;" title="Search Garbages"><a href="#" data-toggle="modal" data-target="#garbage_print"><span class="menu-icon glyphicon glyphicon-search"></span></a></h3>
+    <h3>Reports of Waste</h3>
+    <h3 style="margin-top: -25px;margin-left: 90%;" title="Search Waste"><a href="#" data-toggle="modal" data-target="#garbage_print"><span class="menu-icon glyphicon glyphicon-search"></span></a></h3>
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
             <thead>
             <tr>
                 <th>USER</th>
-                <th style="text-align: center;">TYPE OF GARBAGE</th>
+                <th style="text-align: center;">TYPE OF WASTE</th>
                 <th style="text-align: center;">AMOUNT</th>
                 <th style="text-align: center;">DATE RECORDED</th>
                 @can('edit_garbages', 'delete_garbages')
@@ -95,7 +95,7 @@
                </form>
             </div>
             <div class="modal-footer">
-                <button id="garbage_print_form" class="btn btn-sm search-btn" type="submit" form="garbage_search_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="garbage_print_btn"><span class="menu-icon glyphicon glyphicon-search"></span>&nbsp;Search</button>
+                <button id="garbage_print_form" class="btn btn-sm search-btn" type="submit" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="garbage_print_btn"><span class="menu-icon glyphicon glyphicon-search"></span>&nbsp;Search</button>
             </div>
         </div>
     </div>

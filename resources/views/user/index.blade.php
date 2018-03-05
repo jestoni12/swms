@@ -4,6 +4,7 @@
 
 @section('content_header')
     {{ $result->total() }}  {{ str_plural('User', $result->count()) }}
+    <h3 style="margin-top: -25px;margin-left: 90%;" title="Search User"><a href="#" data-toggle="modal" data-target="#user_search"><span class="menu-icon glyphicon glyphicon-search"></span></a></h3>
 @endsection
 
 @section('content_header_link')
@@ -37,7 +38,7 @@
             <tbody>
             @foreach($result as $item)
                 <tr>
-                    <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
+                    <td>{{ ucfirst($item->name) }}</td>
                     <td>{{ ucfirst($item->username) }}</td>
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     @can('edit_users')
@@ -66,5 +67,42 @@
             {{ $result->links() }}
         </div>
     </div>
-
+    <div class="modal fade" id="user_search" role="dialog">
+        <div class="modal-dialog modal-sm" style="width: 25%;margin-top: 40px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>User Search</b></h4>
+                </div>
+                <div class="modal-body form-horizontal">
+                    <form class="form-horizontal" autocomplete="off"  name="user_search_form" id="user_search_form" role="form"  method="POST" action="">
+                        {{csrf_field()}}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">User :</label>
+                            <div class="col-md-8">
+                                 <input type="text" class="form-control user_name" placeholder="User" name="user_name" value="" id="user_name">
+                            </div>
+                        </div>
+                   </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="search-btn" class="btn btn-sm search-btn" type="submit" form="user_search_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="search-btn">&nbsp;<span class="menu-icon glyphicon glyphicon-search"></span> Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @push('append_js')
+        <script type="text/javascript">
+            $(document).ready(function(){
+                function submitfunc(){
+                    var user = $('.user_name').val().trim();
+                    window.history.pushState("", "", '{{ url("users/search") }}?user='+user);
+                    window.location.reload(); 
+                }
+                $(".search-btn").click(function() {
+                    submitfunc();
+                });
+            });
+        </script>
+    @endpush
 @endsection

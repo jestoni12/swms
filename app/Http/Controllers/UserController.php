@@ -9,6 +9,7 @@ use App\Authorizable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use Illuminate\Support\Facades\Input;
 class UserController extends Controller
 {
     use Authorizable;
@@ -59,8 +60,9 @@ class UserController extends Controller
         $request->merge(['password' => bcrypt($request->get('password'))]);
 
         // Create the user
-        if ( $user = User::create($request->except('roles', 'permissions')) ) {
-
+        if ( $user = User::create($request->except('roles', 'permissions','name')) ) {
+            $user->name = $request->input('firstname').' '.$request->input('middlename').' '.$request->input('lastname');
+            $user->save();
             $this->syncPermissions($request, $user);
 
             flash('User has been created.');
@@ -200,7 +202,7 @@ class UserController extends Controller
     }
 
     public function print(){
-        $users = User::all();
+        $users = User::where('id','!=',1)->orderBy('name','asc')->get();
 
         // $pdf = PDF::setPaper("letter");
         // $pdf->loadView('user.print',compact('users'));
@@ -223,5 +225,16 @@ class UserController extends Controller
             'format' => 'letter'
         ]);
         return $pdf->stream('list_user_barcode.pdf');
+    }
+
+    public function user_search() {
+        $result = User::where('id','!=',1)->orderBy('name','asc');
+
+        if(Input::get('user')){
+            $result->where('name','like','%'.Input::get('user').'%');
+        }
+        $result = $result->paginate(15);
+
+        return view('user.index', compact('result'));
     }
 }

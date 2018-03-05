@@ -269,7 +269,7 @@
                         @can('view_fertilizers','view_garbages')
                             <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-bar"></span><p>Record</p><span class="arrow"></span></a>
                                 <ul class="sub-menu">
-                                    <li class="{{ Request::is('garbage*') ? 'active' : '' }}"><a href="{{ route('create_garbage') }}">Garbage</a></li>
+                                    <li class="{{ Request::is('garbage*') ? 'active' : '' }}"><a href="{{ route('create_garbage') }}">Waste</a></li>
                                     <li class="{{ Request::is('fertilizer*') ? 'active' : '' }}"><a href="{{ route('create_fertilizer') }}">Fertilizer</a></li>
                                 </ul>
                             </li>
@@ -281,7 +281,7 @@
                                         <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer Report</a></li>
                                     @endcan
                                     @can('view_garbage_report')
-                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Garbage Report</a></li>
+                                        <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Waste Report</a></li>
                                     @endcan
                                 </ul>
                             </li>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Garbage Reports</title>
+	<title>Waste Reports</title>
 </head>
 <style type="text/css">
 	table{
@@ -27,17 +27,29 @@
     }
 </style>
 <body>
-	<div>
-		<h2>List of Garbage</h2>
-	</div>
+    <div style="text-align: center;font-size: 12pt;">
+        Republic of the Philippines<br>
+        Office of Ecological Solid Waste Management<br>
+        Poblacion Tabango, Leyte
+    </div><br>
+    <div style="text-align: center;">
+        <h5>Report of Fertilizer Record</h5>
+    </div>
     <div>
-        Total Kilo : {{ $sum }} kg
+        <table>
+            <thead>
+                <tr>
+                    <td style="width: 78%;"><b>Total Weight: {{ number_format($sum,0,'',',') }} kg</b></td>
+                    <td><b>Date : {{ date('M-d-Y') }}</b></td>
+                </tr>
+            </thead>
+        </table>
     </div><br>
 	<table class="circle1" cellpadding="4" cellspacing="0">
         <thead>
         <tr>
             <th class="circle2" style="text-align:center;width: 30%;">USER</th>
-            <th class="circle2" style="text-align:center;width: 30%;">TYPE OF GARBAGE</th>
+            <th class="circle2" style="text-align:center;width: 30%;">TYPE OF WASTE</th>
             <th class="circle2" style="text-align:center;width: 20%;">AMOUNT</th>
             <th class="circle2" style="text-align:center;width: 20%;">DATE RECORDED</th>
         </tr>
