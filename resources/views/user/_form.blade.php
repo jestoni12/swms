@@ -76,7 +76,7 @@
 </div>
 
 <!-- Roles Form Input -->
-<div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}" style="display: none;">
     <label class="control-label col-sm-3" for="roles">Roles:</label>
     <div class="col-sm-9">
         <select class="form-control" id="roles" multiple="true" name="roles[]">

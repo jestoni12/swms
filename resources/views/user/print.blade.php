@@ -42,7 +42,7 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td class="" style="border-bottom: 1px solid black;">{{ ucfirst($user->name) }}</td>
+                <td class="" style="border-bottom: 1px solid black;">{{ ucfirst($user->firstname) }} {{ ucfirst($user->middlename) }} {{ ucfirst($user->lastname) }}</td>
                 <td class="circle2">{{ $user->username }}</td>
                 <td class="circle2">{{ $user->roles->implode('name', ', ') }}</td>
                 <td class="circle2">{{ $user->status }}</td>

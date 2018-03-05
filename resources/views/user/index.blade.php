@@ -18,7 +18,11 @@
     <div class="result-set">
         <div class="row">
             <div class="col-sm-1">
-                <a href="{{route('print_user')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> List of User</a>
+                @if(isset($user))
+                    <a href="{{route('print_user')}}?user={{$user}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>List of User</a>
+                @else
+                    <a href="{{route('print_user')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>List of User</a>
+                @endif
             </div>
             <div class="col-sm-1" style="padding-bottom:10px;display: none;">
                 <a href="{{route('print_user_barcode')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Print Barcode</a>
@@ -29,7 +33,6 @@
             <tr>
                 <th>NAME</th>
                 <th>USERNAME</th>
-                <th>ROLE</th>
                 @can('edit_users', 'delete_users')
                 <th class="text-center">ACTIONS</th>
                 @endcan
@@ -38,9 +41,8 @@
             <tbody>
             @foreach($result as $item)
                 <tr>
-                    <td>{{ ucfirst($item->name) }}</td>
+                    <td>{{ ucfirst($item->firstname) }} {{ ucfirst($item->middlename) }} {{ ucfirst($item->lastname) }}</td>
                     <td>{{ ucfirst($item->username) }}</td>
-                    <td>{{ $item->roles->implode('name', ', ') }}</td>
                     @can('edit_users')
                     <td class="text-center">
                         @include('shared._actions', [

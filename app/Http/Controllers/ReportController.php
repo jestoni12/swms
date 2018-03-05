@@ -9,6 +9,7 @@ use App\Garbage;
 use App\EmployeesLog;
 use App\Employee;
 use Response;
+use DB;
 use Illuminate\Support\Facades\Input;
 class ReportController extends Controller
 {
@@ -21,14 +22,20 @@ class ReportController extends Controller
             abort(403);
         }
 
-        $results = Fertilizer::orderBy('created_at','desc');
+        $results = Fertilizer::join('users','fertilizers.user_id','=','users.id')
+                            ->orderBy('fertilizers.created_at','desc');
         $sum = $results->sum('amount_fertilizers');
+
+        if(Input::get('fer_user')){
+            $results->where(DB::raw("CONCAT(users.firstname,' ',users.middlename,' ', users.lastname)"),'like', '%'.Input::get('fer_user').'%');
+        }
         if(Input::get('datefrom')){
-            $results->where('created_at','>=', Input::get('datefrom'));
+            $results->where(DB::raw('DATE(fertilizers.created_at)'),'>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
         }
         if(Input::get('dateto')){
-            $results->where('created_at','<=', Input::get('dateto'));
+            $results->where(DB::raw('DATE(fertilizers.created_at)'),'<=', date('Y-m-d', strtotime(Input::get('dateto'))));
         }
+
         $results = $results->get();
         // $pdf = PDF::setPaper('letter');
         // $pdf->loadView('reports.fertilizer_report',compact('results'));
@@ -45,15 +52,25 @@ class ReportController extends Controller
             abort(403);
         }
 
-        $results = Garbage::orderBy('created_at','desc');
+        $results = Garbage::join('users','garbages.user_id','=','users.id')
+                            ->select('garbages.*')
+                            ->orderBy('garbages.created_at','desc');
 
         $sum = $results->sum('amount_in_kilo');
+        
+        if(Input::get('gar_user')){
+            $results->where(DB::raw("CONCAT(users.firstname,' ',users.middlename,' ',users.lastname)"),'like','%'.Input::get('gar_user').'%');
+        }
+        if(Input::get('type')){
+            $results->where('garbages.type', Input::get('type'));
+        }
         if(Input::get('datefrom')){
-            $results->where('created_at','>=', Input::get('datefrom'));
+            $results->where(DB::raw('DATE(garbages.created_at)'),'>=',date('Y-m-d', strtotime(Input::get('datefrom'))));
         }
         if(Input::get('dateto')){
-            $results->where('created_at','<=', Input::get('dateto'));
+            $results->where(DB::raw('DATE(garbages.created_at)'),'<=',date('Y-m-d', strtotime(Input::get('dateto'))));
         }
+
         $results = $results->get();
         // $pdf = PDF::setPaper('letter');
         // $pdf->loadView('reports.garbage_report',compact('results'));
@@ -71,18 +88,22 @@ class ReportController extends Controller
                             ->orderBy('fertilizers.created_at','desc');
 
         if(Input::get('fer_user')){
-            $results->where('users.name','like', '%'.Input::get('fer_user').'%');
+            $results->where(DB::raw("CONCAT(users.firstname,' ',users.middlename,' ', users.lastname)"),'like', '%'.Input::get('fer_user').'%');
         }
         if(Input::get('datefrom')){
-            $results->where('fertilizers.created_at','>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
+            $results->where(DB::raw('DATE(fertilizers.created_at)'),'>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
         }
         if(Input::get('dateto')){
-            $results->where('fertilizers.created_at','<=', date('Y-m-d', strtotime(Input::get('dateto'))));
+            $results->where(DB::raw('DATE(fertilizers.created_at)'),'<=', date('Y-m-d', strtotime(Input::get('dateto'))));
         }
+
+        $fer_user = Input::get('fer_user');
+        $datefrom = Input::get('datefrom');
+        $dateto = Input::get('dateto');
 
         $result = $results->paginate(15);
 
-        return view('record.fertilizer.index',compact('result'));
+        return view('record.fertilizer.index',compact('result','fer_user','datefrom','dateto'));
     }
 
     public function garbage_search() {
@@ -91,20 +112,25 @@ class ReportController extends Controller
                             ->orderBy('garbages.created_at','desc');
 
         if(Input::get('gar_user')){
-            $results->where('users.name','like', '%'.Input::get('gar_user').'%');
+            $results->where(DB::raw("CONCAT(users.firstname,' ',users.middlename,' ', users.lastname)"),'like', '%'.Input::get('gar_user').'%');
         }
         if(Input::get('type')){
             $results->where('garbages.type', Input::get('type'));
         }
         if(Input::get('datefrom')){
-            $results->where('garbages.created_at','>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
+            $results->where(DB::raw('DATE(garbages.created_at)'),'>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
         }
         if(Input::get('dateto')){
-            $results->where('garbages.created_at','<=', date('Y-m-d', strtotime(Input::get('dateto'))));
+            $results->where(DB::raw('DATE(garbages.created_at)'),'<=', date('Y-m-d', strtotime(Input::get('dateto'))));
         }
 
         $garbage = $results->paginate(15);
 
-        return view('record.garbage.index',compact('garbage'));
+        $gar_user = Input::get('gar_user');
+        $type = Input::get('type');
+        $datefrom = Input::get('datefrom');
+        $dateto = Input::get('dateto');
+
+        return view('record.garbage.index',compact('garbage','gar_user','type','datefrom','dateto'));
     }
 }

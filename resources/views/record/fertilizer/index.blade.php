@@ -9,7 +9,11 @@
     <div class="result-set">
         <div class="row">
             <div class="col-sm-1">
-                <a href="{{route('fertilizer_print')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>Print</a>
+                @if(isset($fer_user) || isset($datefrom) || isset($dateto))
+                    <a href="{{route('fertilizer_print')}}?fer_user={{$fer_user}}&datefrom={{$datefrom}}&dateto={{$dateto}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>Print</a>
+                @else
+                    <a href="{{route('fertilizer_print')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>Print</a>
+                @endif
             </div>
         </div>
         <table class="table table-striped table-hover" id="data-table">

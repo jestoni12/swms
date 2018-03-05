@@ -10,7 +10,11 @@
     <div class="result-set">
         <div class="row">
             <div class="col-sm-1">
-                <a href="{{route('garbage_print')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>Print</a>
+                @if(isset($gar_user) || isset($type) || isset($datefrom) || isset($dateto))
+                    <a href="{{route('garbage_print')}}?gar_user={{$gar_user}}&type={{$type}}&datefrom={{$datefrom}}&dateto={{$dateto}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>Print</a>
+                @else
+                    <a href="{{route('garbage_print')}}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i>Print</a>
+                @endif
             </div>
         </div>
         <table class="table table-striped table-hover" id="data-table">

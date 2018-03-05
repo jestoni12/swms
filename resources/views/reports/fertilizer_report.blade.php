@@ -26,7 +26,7 @@
     }
 </style>
 <body>
-	<div style="text-align: center;font-size: 12pt;">
+	<div style="text-align: center;font-size: 10pt;">
         Republic of the Philippines<br>
         Office of Ecological Solid Waste Management<br>
         Poblacion Tabango, Leyte

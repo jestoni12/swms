@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use Illuminate\Support\Facades\Input;
+use DB;
 class UserController extends Controller
 {
     use Authorizable;
@@ -52,8 +53,7 @@ class UserController extends Controller
             'firstname' => 'required|min:1',
             'lastname' => 'required|min:1',
             'username' => 'required|unique:users',
-            'password' => 'required|min:4',
-            'roles' => 'required|min:1'
+            'password' => 'required|min:4'
         ]);
 
         // hash password
@@ -61,8 +61,6 @@ class UserController extends Controller
 
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions','name')) ) {
-            $user->name = $request->input('firstname').' '.$request->input('middlename').' '.$request->input('lastname');
-            $user->save();
             $this->syncPermissions($request, $user);
 
             flash('User has been created.');
@@ -202,7 +200,9 @@ class UserController extends Controller
     }
 
     public function print(){
-        $users = User::where('id','!=',1)->orderBy('name','asc')->get();
+        $users = User::orderBy('name','asc')
+                    ->where(DB::raw("CONCAT(firstname,' ', middlename,' ', lastname)"),'like','%'.Input::get('user').'%')
+                    ->get();
 
         // $pdf = PDF::setPaper("letter");
         // $pdf->loadView('user.print',compact('users'));
@@ -228,13 +228,15 @@ class UserController extends Controller
     }
 
     public function user_search() {
-        $result = User::where('id','!=',1)->orderBy('name','asc');
+        $result = User::orderBy('name','asc');
 
         if(Input::get('user')){
-            $result->where('name','like','%'.Input::get('user').'%');
+            $result->where(DB::raw("CONCAT(firstname,' ', middlename,' ', lastname)"),'like','%'.Input::get('user').'%');
         }
         $result = $result->paginate(15);
 
-        return view('user.index', compact('result'));
+        $user = Input::get('user');
+
+        return view('user.index', compact('result','user'));
     }
 }

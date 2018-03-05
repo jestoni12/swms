@@ -246,7 +246,7 @@
                                         <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
                                     @endcan
                                     @can('view_roles')
-                                        <li class="{{ Request::is('roles*') ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li>
+                                        <li class="{{ Request::is('roles*') ? 'active' : '' }}" style="display: none;"><a href="{{ route('roles.index') }}">Roles</a></li>
                                     @endcan
                                     @can('view_user_logs')
                                         <li class="{{ Request::is('record/userlog*') ? 'active' : '' }}" style="display: none;"><a href="{{ route('userlogs') }}">User Logs</a></li>
