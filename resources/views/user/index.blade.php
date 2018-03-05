@@ -52,10 +52,14 @@
                         <form action="{{ route('users.update',$item->id)}}" style="display: inline;"  method="POST">
                             {{csrf_field()}}
                             {{ method_field('PATCH') }}
-                            @if($item->status == 'Active')
-                                <button style="width: 60px;" type="submit" name="active" value="Active" class="btn-success btn btn-xs btn-success">Active</button>
+                            @if($item->id == 1)
+                                <button style="width: 60px;" type="submit" name="active" value="Active" class="btn-success btn btn-xs btn-success" disabled="">Active</button>
                             @else
-                                <button type="submit" name="inactive" value="Inactive" class="btn-danger btn btn-xs btn-danger">Inactive</button>
+                                @if($item->status == 'Active')
+                                    <button style="width: 60px;" type="submit" name="active" value="Active" class="btn-success btn btn-xs btn-success">Active</button>
+                                @else
+                                    <button type="submit" name="inactive" value="Inactive" class="btn-danger btn btn-xs btn-danger">Inactive</button>
+                                @endif
                             @endif
                         </form>
                     </td>
