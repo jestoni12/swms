@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', ' - Report Garbage')
+@section('title', ' - Report Waste')
 @section('content_header')
-    <h3>Reports of Garbages</h3>
-    <h3 style="margin-top: -25px;margin-left: 90%;" title="Search Garbages"><a href="#" data-toggle="modal" data-target="#garbage_print"><span class="menu-icon glyphicon glyphicon-search"></span></a></h3>
+    <h3>Reports of Waste</h3>
+    <h3 style="margin-top: -25px;margin-left: 90%;" title="Search Waste"><a href="#" data-toggle="modal" data-target="#garbage_print"><span class="menu-icon glyphicon glyphicon-search"></span></a></h3>
 @endsection
 
 @section('content')
