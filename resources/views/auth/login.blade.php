@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-3 center">
                             <div class="login-box">
-                                <a href="" class="logo-name text-lg text-center"> <img src="{{asset('assets/images/swms-logo.png')}}" class="text-center" width="50px" height="50px"> SWMS</a>
+                                <a href="" class="logo-name text-lg text-center"> <img src="{{asset('assets/images/swms-logo.png')}}" class="text-center" width="50px" height="50px"><p style="width: 100%"><b>E-recording of Composts in ESWMS Office of Tabango, Leyte</b></p></a>
                                 <p class="text-center m-t-md">Please login into your account.</p>
                                 <form class="m-t-md" action="{{ route('login') }}" method="POST" autocomplete="off">
                                     {{ csrf_field() }}
