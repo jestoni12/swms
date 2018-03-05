@@ -27,14 +27,14 @@
     }
 </style>
 <body>
-    <div>
-        <h2>Republic of the Philippines</h2>
-        <h2>Office of Ecological Solid Waste Management</h2>
-        <h2>Poblacion Tabango, Leyte</h2>
+    <div style="text-align: center;font-size: 12pt;">
+        Republic of the Philippines<br>
+        Office of Ecological Solid Waste Management<br>
+        Poblacion Tabango, Leyte
     </div><br>
-	<div>
-		<h2>Report of Waste Record</h2>
-	</div>
+    <div style="text-align: center;">
+        <h5>Report of Fertilizer Record</h5>
+    </div>
     <div>
         <table>
             <thead>
