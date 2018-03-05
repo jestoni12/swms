@@ -67,6 +67,7 @@ class ReportController extends Controller
 
     public function fertilizer_search() {
         $results = Fertilizer::join('users','fertilizers.user_id','=','users.id')
+                            ->select('garbages.*')
                             ->orderBy('fertilizers.created_at','desc');
 
         if(Input::get('fer_user')){
@@ -86,6 +87,7 @@ class ReportController extends Controller
 
     public function garbage_search() {
         $results = Garbage::join('users','garbages.user_id','=','users.id')
+                            ->select('garbages.*')
                             ->orderBy('garbages.created_at','desc');
 
         if(Input::get('gar_user')){

@@ -33,7 +33,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('/record/userlogs', 'RecordController@user_index')->name('userlogs');
     Route::get('/record/userlogs/printlogs', 'RecordController@printlogs')->name('printlogs');
     Route::get('/record/userlogs/show_logs', 'RecordController@show_logs')->name('show_logs');
-    Route::get('/users/print/user/list}', 'UserController@print')->name('print_user');
+    Route::get('/users/print/user/list', 'UserController@print')->name('print_user');
     Route::get('/users/print/user/list_barcode', 'UserController@print2')->name('print_user_barcode');
 
     Route::get('/record/index', 'RecordController@record')->name('record');
