@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\UserLog;
 use Illuminate\Http\Request;
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -68,11 +69,16 @@ class LoginController extends Controller
         
         return redirect('/login');
     }
-    public function authenticate()
+    public function login(Request $request)
     {
+        $username = $request->input('username');
+        $password = $request->input('password');
         if (Auth::attempt(['username' => $username, 'password' => $password, 'status' => 'Active'])) {
             // Authentication passed...
             return redirect()->intended('/home');
+        }
+        else{
+            return redirect()->route('login');
         }
     }
 }
