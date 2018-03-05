@@ -17,7 +17,7 @@
             <thead>
             <tr>
                 <th>USER</th>
-                <th style="text-align: center;">TYPE OF GARBAGE</th>
+                <th style="text-align: center;">TYPE OF WASTE</th>
                 <th style="text-align: center;">AMOUNT</th>
                 <th style="text-align: center;">DATE RECORDED</th>
                 @can('edit_garbages', 'delete_garbages')
