@@ -239,29 +239,29 @@
                         </div>
                     </div>
                     <ul class="menu accordion-menu">
-                            <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
-                            <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}" style="display: none;"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
-                                <ul class="sub-menu">
-                                    @can('view_employees')
-                                        <li class="{{ Request::is('employees*') ? 'active' : '' }}"><a href="{{ route('employees') }}">Employees</a></li>
-                                    @endcan
-                                    @can('view_jobs')
-                                        <li class="{{ Request::is('jobs*') ? 'active' : '' }}"><a href="{{ route('jobs') }}">Jobs</a></li>
-                                    @endcan
-                                </ul>
-                            </li>
-                            <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-bar"></span><p>Record</p><span class="arrow"></span></a>
-                                <ul class="sub-menu">
-                                    <li class="{{ Request::is('garbage*') ? 'active' : '' }}"><a href="{{ route('create_garbage') }}">Waste</a></li>
-                                    <li class="{{ Request::is('fertilizer*') ? 'active' : '' }}"><a href="{{ route('create_fertilizer') }}">Fertilizer</a></li>
-                                </ul>
-                            </li>
-                            <li  style="margin-bottom:100px;" class="droplink {{ Request::is('reports*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-file"></span><p>Reports</p><span class="arrow"></span></a>
-                                <ul class="sub-menu">
-                                    <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer Report</a></li>
-                                    <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Waste Report</a></li>
-                                </ul>
-                            </li>
+                        <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
+                        <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}" style="display: none;"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                @can('view_employees')
+                                    <li class="{{ Request::is('employees*') ? 'active' : '' }}"><a href="{{ route('employees') }}">Employees</a></li>
+                                @endcan
+                                @can('view_jobs')
+                                    <li class="{{ Request::is('jobs*') ? 'active' : '' }}"><a href="{{ route('jobs') }}">Jobs</a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                        <li class="droplink {{ Request::is('record*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-bar"></span><p>Record</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li class="{{ Request::is('garbage*') ? 'active' : '' }}"><a href="{{ route('create_garbage') }}">Waste</a></li>
+                                <li class="{{ Request::is('fertilizer*') ? 'active' : '' }}"><a href="{{ route('create_fertilizer') }}">Fertilizer</a></li>
+                            </ul>
+                        </li>
+                        <li  style="margin-bottom:100px;" class="droplink {{ Request::is('reports*') ? 'active' : '' }}"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-file"></span><p>Reports</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li class="{{ Request::is('reports/fertilizer*') ? 'active' : '' }}"><a href="{{ route('fertilizer') }}">Fertilizer Report</a></li>
+                                <li class="{{ Request::is('reports/garbage*') ? 'active' : '' }}"><a href="{{ route('garbage') }}">Waste Report</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->

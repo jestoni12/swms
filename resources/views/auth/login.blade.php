@@ -13,6 +13,9 @@
                             <div class="login-box">
                                 <a href="" class="logo-name text-lg text-center"> <img src="{{asset('assets/images/swms-logo.png')}}" class="text-center" width="50px" height="50px" style="display: none;"><p style="width: 100%"><b>E-recording of Composts in ESWMS Office of Tabango, Leyte</b></p></a>
                                 <p class="text-center m-t-md">Please login into your account.</p>
+                                @if (Session::has('message'))
+                                   <div class="alert alert-danger" style="text-align: center;">{{ Session::get('message') }}</div>
+                                @endif
                                 <form class="m-t-md" action="{{ route('login') }}" method="POST" autocomplete="off">
                                     {{ csrf_field() }}
                                     <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\UserLog;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 class LoginController extends Controller
 {
     /*
@@ -78,6 +79,7 @@ class LoginController extends Controller
             return redirect()->intended('/home');
         }
         else{
+            Session::flash('message', "User is already inactive.Please contact to admistrator.");
             return redirect()->route('login');
         }
     }
