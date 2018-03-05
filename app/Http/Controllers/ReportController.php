@@ -67,7 +67,7 @@ class ReportController extends Controller
 
     public function fertilizer_search() {
         $results = Fertilizer::join('users','fertilizers.user_id','=','users.id')
-                            ->select('garbages.*')
+                            ->select('fertilizers.*')
                             ->orderBy('fertilizers.created_at','desc');
 
         if(Input::get('fer_user')){
