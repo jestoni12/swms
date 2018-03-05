@@ -73,7 +73,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::get('/reports/fertilizer/print', 'ReportController@fertilizer_print')->name('fertilizer_print');
     Route::get('/reports/garbage/print', 'ReportController@garbage_print')->name('garbage_print');
 
-    Route::post('/reports/fertilizer/search', 'ReportController@fertilizer_search')->name('fertilizer_search');
-    Route::post('/reports/garbage/search', 'ReportController@garbage_search')->name('garbage_search');
+    Route::get('/reports/fertilizer/search', 'ReportController@fertilizer_search')->name('fertilizer_search');
+    Route::get('/reports/garbage/search', 'ReportController@garbage_search')->name('garbage_search');
     Route::post('/users/search', 'UserController@user_search')->name('user_search');
 });

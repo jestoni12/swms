@@ -42,27 +42,27 @@ class ReportController extends Controller
 
     public function garbage_print(){
         if(!auth()->user()->hasPermission('view_garbage_report')){
-                abort(403);
-            }
+            abort(403);
+        }
 
-            $results = Garbage::orderBy('created_at','desc');
+        $results = Garbage::orderBy('created_at','desc');
 
-            $sum = $results->sum('amount_in_kilo');
-            if(Input::get('datefrom')){
-                $results->where('created_at','>=', Input::get('datefrom'));
-            }
-            if(Input::get('dateto')){
-                $results->where('created_at','<=', Input::get('dateto'));
-            }
-            $results = $results->get();
-            // $pdf = PDF::setPaper('letter');
-            // $pdf->loadView('reports.garbage_report',compact('results'));
-            // return $pdf->stream();
+        $sum = $results->sum('amount_in_kilo');
+        if(Input::get('datefrom')){
+            $results->where('created_at','>=', Input::get('datefrom'));
+        }
+        if(Input::get('dateto')){
+            $results->where('created_at','<=', Input::get('dateto'));
+        }
+        $results = $results->get();
+        // $pdf = PDF::setPaper('letter');
+        // $pdf->loadView('reports.garbage_report',compact('results'));
+        // return $pdf->stream();
 
-            $pdf = PDF::loadView('reports.garbage_report',compact('results','sum'), [], [
-                'format' => 'letter'
-            ]);
-            return $pdf->stream('garbage.pdf');
+        $pdf = PDF::loadView('reports.garbage_report',compact('results','sum'), [], [
+            'format' => 'letter'
+        ]);
+        return $pdf->stream('garbage.pdf');
     }
 
     public function fertilizer_search() {
@@ -73,11 +73,11 @@ class ReportController extends Controller
         if(Input::get('fer_user')){
             $results->where('users.name','like', '%'.Input::get('fer_user').'%');
         }
-        if(Input::get('fer_datefrom')){
-            $results->where('fertilizers.created_at','>=', date('Y-m-d', strtotime(Input::get('fer_datefrom'))));
+        if(Input::get('datefrom')){
+            $results->where('fertilizers.created_at','>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
         }
-        if(Input::get('fer_dateto')){
-            $results->where('fertilizers.created_at','<=', date('Y-m-d', strtotime(Input::get('fer_dateto'))));
+        if(Input::get('dateto')){
+            $results->where('fertilizers.created_at','<=', date('Y-m-d', strtotime(Input::get('dateto'))));
         }
 
         $result = $results->paginate(15);
@@ -96,11 +96,11 @@ class ReportController extends Controller
         if(Input::get('type')){
             $results->where('garbages.type', Input::get('type'));
         }
-        if(Input::get('gar_datefrom')){
-            $results->where('garbages.created_at','>=', date('Y-m-d', strtotime(Input::get('gar_datefrom'))));
+        if(Input::get('datefrom')){
+            $results->where('garbages.created_at','>=', date('Y-m-d', strtotime(Input::get('datefrom'))));
         }
-        if(Input::get('gar_dateto')){
-            $results->where('garbages.created_at','<=', date('Y-m-d', strtotime(Input::get('gar_dateto'))));
+        if(Input::get('dateto')){
+            $results->where('garbages.created_at','<=', date('Y-m-d', strtotime(Input::get('dateto'))));
         }
 
         $garbage = $results->paginate(15);

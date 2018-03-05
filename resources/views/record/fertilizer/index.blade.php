@@ -81,7 +81,7 @@
                </form>
             </div>
             <div class="modal-footer">
-                <button id="search-btn" class="btn btn-sm search-btn" type="submit" form="fertilizer_search_form" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="search-btn">&nbsp;<span class="menu-icon glyphicon glyphicon-search"></span> Search</button>
+                <button id="search-btn" class="btn btn-sm search-btn" type="submit" style="margin-top:-7px; float: right; background-color:#a6a6a6;font-weight:200;color:#0d0d0d;height:28px;border:1px solid #8c8c8c;" value="search-btn" name="search-btn">&nbsp;<span class="menu-icon glyphicon glyphicon-search"></span> Search</button>
             </div>
         </div>
     </div>
