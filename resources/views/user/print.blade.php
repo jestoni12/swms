@@ -34,7 +34,6 @@
         <tr>
             <th class="" style="text-align: left;border-bottom: 1px solid black;width: 30%;">Name</th>
             <th class="circle2" style="width: 20%;">Username</th>
-            <th class="circle2" style="width: 15%;">Role</th>
             <th class="circle2" style="width: 20%;">Status</th>
             <th class="circle2" style="width: 15%;">Created At</th>
         </tr>
@@ -44,7 +43,6 @@
             <tr>
                 <td class="" style="border-bottom: 1px solid black;">{{ ucfirst($user->firstname) }} {{ ucfirst($user->middlename) }} {{ ucfirst($user->lastname) }}</td>
                 <td class="circle2">{{ $user->username }}</td>
-                <td class="circle2">{{ $user->roles->implode('name', ', ') }}</td>
                 <td class="circle2">{{ $user->status }}</td>
                 <td class="circle2">{{ $user->created_at->toFormattedDateString() }}</td>
             </tr>
