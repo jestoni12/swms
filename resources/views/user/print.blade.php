@@ -16,6 +16,7 @@
 	}
     .circle2{
         border-bottom: 1px solid black;
+        text-align: center;
     }
     .circle1{
         border-top: 1px solid black;
@@ -31,19 +32,17 @@
 	<table class="circle1" id="data-table" cellspacing="0" cellpadding="2">
         <thead>
         <tr>
-            <th class="circle2">User ID</th>
-            <th class="circle2">Name</th>
-            <th class="circle2">Username</th>
-            <th class="circle2">Role</th>
-            <th class="circle2">Status</th>
-            <th class="circle2">Created At</th>
+            <th class="" style="text-align: left;border-bottom: 1px solid black;width: 30%;">Name</th>
+            <th class="circle2" style="width: 20%;">Username</th>
+            <th class="circle2" style="width: 15%;">Role</th>
+            <th class="circle2" style="width: 20%;">Status</th>
+            <th class="circle2" style="width: 15%;">Created At</th>
         </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td class="circle2" style="padding-left: 30px;">{{ $user->id }}</td>
-                <td class="circle2">{{ ucfirst($user->firstname) }} {{ ucfirst($user->middlename) }} {{ ucfirst($user->lastname) }}</td>
+                <td class="" style="border-bottom: 1px solid black;">{{ ucfirst($user->name) }}</td>
                 <td class="circle2">{{ $user->username }}</td>
                 <td class="circle2">{{ $user->roles->implode('name', ', ') }}</td>
                 <td class="circle2">{{ $user->status }}</td>

@@ -70,7 +70,7 @@ class ReportController extends Controller
                             ->orderBy('fertilizers.created_at','desc');
 
         if(Input::get('fer_user')){
-            $results->where('users.username','like', '%'.Input::get('fer_user').'%');
+            $results->where('users.name','like', '%'.Input::get('fer_user').'%');
         }
         if(Input::get('fer_datefrom')){
             $results->where('fertilizers.created_at','>=', date('Y-m-d', strtotime(Input::get('fer_datefrom'))));
@@ -89,7 +89,7 @@ class ReportController extends Controller
                             ->orderBy('garbages.created_at','desc');
 
         if(Input::get('gar_user')){
-            $results->where('users.username','like', '%'.Input::get('gar_user').'%');
+            $results->where('users.name','like', '%'.Input::get('gar_user').'%');
         }
         if(Input::get('type')){
             $results->where('garbages.type', Input::get('type'));

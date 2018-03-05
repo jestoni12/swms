@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', ' - Garbage Weigh In')
+@section('title', ' - Waste Weigh In')
 
 @section('content_header')
-    <h3>Recording of Garbages</h3>
+    <h3>Recording of Waste</h3>
 @endsection
 @section('content_header_link')
 @endsection
@@ -13,9 +13,9 @@
             <form class="form-horizontal" action="{{route('store_garbage')}}" method="POST">
                 {{csrf_field()}}
                 <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                    <label class="control-label col-sm-3" for="status">Garbage Type :</label>
+                    <label class="control-label col-sm-3" for="status">Waste Type :</label>
                     <div class="col-sm-4">
-                        <select class="form-control" name="type" placeholder="Type of Garbage" id="type" required>
+                        <select class="form-control" name="type" placeholder="Type of Waste" id="type" required>
                                 <option value="" selected="">--Select One--</option>
                                 <option value="Biodegradable">Biodegradable</option>
                                 <option value="Non-Biodegradable">Non-Biodegradable</option>

@@ -27,10 +27,22 @@
 </style>
 <body>
 	<div>
-		<h2>List of Fertilizer</h2>
-	</div>
+        <h2>Republic of the Philippines</h2>
+        <h2>Office of Ecological Solid Waste Management</h2>
+        <h2>Poblacion Tabango, Leyte</h2>
+    </div><br>
     <div>
-        Total Amount : {{ $sum }}
+        <h2>Report of Fertilizer Record</h2>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width: 78%;"><b>Total Weight: {{ number_format($sum,0,'',',') }} kg</b></td>
+                    <td><b>Date : {{ date('M-d-Y') }}</b></td>
+                </tr>
+            </thead>
+        </table>
     </div><br>
 	<table class="circle1" cellpadding="4" cellspacing="0">
         <thead>
