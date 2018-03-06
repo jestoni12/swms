@@ -79,7 +79,7 @@ class LoginController extends Controller
             return redirect()->intended('/home');
         }
         else{
-            Session::flash('message', "User is already inactive.Please contact to admistrator.");
+            Session::flash('message', "User is already inactive.Please contact to administrator.");
             return redirect()->route('login');
         }
     }
