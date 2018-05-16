@@ -172,7 +172,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -236,7 +237,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
-
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

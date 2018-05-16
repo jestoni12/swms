@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
+<html>    
+<head>
        @include('layouts.head')
     </head>
     <body class="page-header-fixed">
