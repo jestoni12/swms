@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
             ]);
         $user->assignRole($role->name);
 
-        if( $role->name == 'Admin' ) {
+        if( $role->name == 'Admin' || $role->name == 'admin' ) {
             $this->command->info('Here is your admin details to login:');
             $this->command->warn($user->username);
             $this->command->warn('Password is "secret"');

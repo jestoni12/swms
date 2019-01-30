@@ -239,7 +239,7 @@
                     </div>
                     <ul class="menu accordion-menu">
                         <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
-                        <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}" style="display: none;"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
+                        <li class="droplink {{ Request::is('employees*') ? 'active' : '' }}" style=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Employee Management</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 @can('view_employees')
                                     <li class="{{ Request::is('employees*') ? 'active' : '' }}"><a href="{{ route('employees') }}">Employees</a></li>
