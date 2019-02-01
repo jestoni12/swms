@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title', ' - Roles & Permissions')
+@section('title', ' - Permissions')
 
-@section('content_header', 'Roles And Permissions')
+@section('content_header', 'Permissions')
 
 @section('content')
 

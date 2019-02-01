@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             foreach($roles_array as $role) {
                 $role = Role::firstOrCreate(['name' => trim($role)]);
 
-                if( $role->name == 'Admin' ) {
+                if( $role->name == 'Admin' || $role->name == 'admin') {
                     // assign all permissions
                     $role->syncPermissions(Permission::all());
                     $this->command->info('Admin granted all the permissions');
